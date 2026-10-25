@@ -1,0 +1,79 @@
+name: Update CFTC dashboard
+
+on:
+  schedule:
+    # CFTC publishes Fridays 15:30 ET (positions as of Tuesday). First run is
+    # Sat ~05:20 SGT, a retry Sat afternoon SGT, and a Monday-evening ET run
+    # catches holiday-delayed releases.
+    - cron: "23 21 * * 5"
+    - cron: "23 7 * * 6"
+    - cron: "23 22 * * 1"
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Re-download the full history
+        type: boolean
+        default: false
+  push:
+    branches: [main, "claude/**"]
+    paths: ["cftc/**", "web/**", "tests/**", "requirements.txt", ".github/workflows/update.yml"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: cftc-update
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q tests
+      - name: Restore data store from the data branch
+        run: |
+          mkdir -p datastore
+          if git fetch --depth=1 origin +refs/heads/data:refs/remotes/origin/data; then
+            git archive origin/data | tar -x -C datastore
+          else
+            echo "No data branch yet: full download"
+          fi
+      - name: Fetch CFTC reports and prices
+        run: python -m cftc fetch --store datastore ${{ inputs.full && '--full' || '' }}
+      - name: Build dashboard
+        run: python -m cftc build --store datastore
+      - name: Save data store to the data branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd datastore
+          rm -rf .git
+          git init -q -b data
+          git add -A
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -qm "Data $(date -u +%Y-%m-%dT%H:%MZ) (${GITHUB_REF_NAME}@${GITHUB_SHA::7})"
+          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: datastore/site
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

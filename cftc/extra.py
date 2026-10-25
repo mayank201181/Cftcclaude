@@ -231,28 +231,80 @@ def fetch_jpx(raw):
     if new:
         dv = pd.concat([dv] + new, ignore_index=True)
         dv.to_csv(dv_path, index=False)
-    # one-off diagnostics: legend from the PDF version and the old-format archive workbook
+    # product names: the PDF version has one page per product, in the CSV's product order
     pdfs = sorted(x for x in links if re.search(r"Tousi_DV_pdf_W_\d{8}_\d{8}\.pdf$", x))
-    if pdfs and not (d / "dv_legend.txt").exists():
+    if pdfs and not (d / "dv_titles.json").exists():
         r = _get(JPX + pdfs[-1])
         if r is not None and r.status_code == 200:
             try:
                 from pypdf import PdfReader
-                text = "\n".join(p.extract_text() or "" for p in PdfReader(io.BytesIO(r.content)).pages[:3])
-                (d / "dv_legend.txt").write_text(text)
+                titles = []
+                for pg in PdfReader(io.BytesIO(r.content)).pages:
+                    t = pg.extract_text() or ""
+                    m = re.search(r"/\s*([A-Za-z][^\n]*?(?:Futures|Options)[^\n]*)", t)
+                    titles.append(m.group(1).strip() if m else "")
+                (d / "dv_titles.json").write_text(json.dumps(titles))
             except Exception as e:  # noqa: BLE001
                 diag["pdf"] = repr(e)
+    # older weekly workbooks (pre-2026 layout): backfill the equity flow history
     olds = sorted(x for x in links if re.search(r"stock_val_1_\d{6}\.xls$", x))
-    if olds and not (d / "eq_old_sample.txt").exists():
-        r = _get(JPX + olds[-1])
-        if r is not None and r.status_code == 200:
-            try:
-                x = pd.read_excel(io.BytesIO(r.content), header=None, sheet_name=0)
-                (d / "eq_old_sample.txt").write_text(x.head(60).to_string())
-            except Exception as e:  # noqa: BLE001
-                diag["xls"] = repr(e)
+    old_rows, old_err = [], 0
+    for link in olds:
+        key = link.rsplit("/", 1)[-1]
+        if key in set(eq.get("src", pd.Series(dtype=str)).astype(str)):
+            continue
+        r = _get(JPX + link)
+        if r is None or r.status_code != 200:
+            continue
+        try:
+            rec = _parse_jpx_eq_old(r.content)
+        except Exception:  # noqa: BLE001
+            rec = None
+        if rec:
+            rec["src"] = key
+            old_rows.append(rec)
+        else:
+            old_err += 1
+            if not (d / "sample_old.xls").exists():
+                (d / "sample_old.xls").write_bytes(r.content)
+    if old_rows:
+        eq = pd.concat([eq, pd.DataFrame(old_rows)], ignore_index=True)
+        eq = eq.sort_values("week_end", kind="stable").drop_duplicates("week_end", keep="first")
+        eq.to_csv(eq_path, index=False)
     return {"eq_weeks": int(len(eq)), "dv_rows": int(len(dv)), "links": len(links),
-            "old_xls_links": len(olds), **diag}
+            "old_xls_links": len(olds), "old_parsed": len(old_rows), "old_failed": old_err, **diag}
+
+
+def _parse_jpx_eq_old(content):
+    """Pre-2026 weekly TSE Prime value workbook: two week blocks side by side."""
+    x = pd.read_excel(io.BytesIO(content), header=None, sheet_name=0)
+    cell = lambda i, j: str(x.iat[i, j]) if i < x.shape[0] and j < x.shape[1] else ""
+    # the "Balance" header row; its right-most column is the latest week
+    hdr = [i for i in range(min(30, x.shape[0])) if any("Balance" in cell(i, j) for j in range(x.shape[1]))]
+    if not hdr:
+        return None
+    bcol = max(j for j in range(x.shape[1]) if "Balance" in cell(hdr[0], j))
+    title = " ".join(cell(i, 0) for i in range(min(8, x.shape[0])))
+    m = re.search(r"(\d{4})/(\d{1,2})\s*week\s*\d+\s*\(\s*(\d{1,2})/(\d{1,2})\s*-\s*(\d{1,2})/(\d{1,2})", title)
+    if not m:
+        return None
+    year, mon, m_end, d_end = int(m.group(1)), int(m.group(2)), int(m.group(5)), int(m.group(6))
+    if mon == 12 and m_end == 1:
+        year += 1
+    week_end = dt.date(year, m_end, d_end)
+
+    def balance(*labels):
+        # the balance sits on the sales row when negative and the purchases row (the English label) when positive
+        for i in range(x.shape[0]):
+            if any(lab in cell(i, j) for lab in labels for j in range(3)):
+                for k in (i, i - 1, i + 1):
+                    v = pd.to_numeric(cell(k, bcol).replace(",", ""), errors="coerce")
+                    if v == v:
+                        return float(v) * 1000
+        return np.nan
+    return {"week_end": str(week_end), "foreign_inst": balance("Foreigners"), "foreign_indiv": 0.0,
+            "indiv_cash": balance("Individuals"), "indiv_margin": 0.0, "inv_trusts": balance("Investment"),
+            "trust_banks": balance("Trust Banks", "Trust BK"), "business_cos": balance("Business Cos")}
 
 
 # --------------------------------------------------------------------------- Taiwan foreign flows
@@ -433,19 +485,33 @@ def build_outputs(raw, data_dir):
             "trust_banks_usd": [None if v != v else round(v, 0) for v in (j.get("trust_banks", 0) / usdjpy).tolist()],
             "inv_trusts_usd": [None if v != v else round(v, 0) for v in (j.get("inv_trusts", 0) / usdjpy).tolist()],
         }
-    p = raw / "jpx" / "dv_weekly.csv"
-    if p.exists():
+    p, tp = raw / "jpx" / "dv_weekly.csv", raw / "jpx" / "dv_titles.json"
+    if p.exists() and tp.exists():
         d = pd.read_csv(p, dtype=str)
-        d = d[d["vv"] == "2"].copy()      # 2 = value (yen)
+        titles = json.loads(tp.read_text())
+        latest = sorted(d["file"].unique())[-1]
+        order = list(dict.fromkeys(d.loc[d["file"] == latest, "product"]))
+        names = {code: titles[i] for i, code in enumerate(order) if i < len(titles)}
+        groups = {"Nikkei 225 futures": r"^Nikkei 225 (mini |Micro )?Futures", "TOPIX futures": r"^(mini-)?TOPIX (Micro )?Futures",
+                  "JGB futures": r"JGB Futures"}
+        who = {"60": "foreigners", "51": "individuals", "23": "trust_banks", "11": "proprietary"}
+        d = d[d["vv"] == "2"].copy()      # 2 = value in yen
         for c in ("sales", "purch"):
             d[c] = pd.to_numeric(d[c], errors="coerce")
         d["net"] = d["purch"] - d["sales"]
         d["week_end"] = pd.to_datetime(d["to"], format="%Y%m%d", errors="coerce").dt.strftime("%Y-%m-%d")
-        piv = d.groupby(["product", "investor", "week_end"])["net"].sum()
-        flows["jpx_dv"] = {"rows": [[a, b, c, float(v)] for (a, b, c), v in piv.items()]}
-        leg = raw / "jpx" / "dv_legend.txt"
-        if leg.exists():
-            flows["jpx_dv"]["legend"] = leg.read_text()[:6000]
+        weeks = sorted(d["week_end"].dropna().unique())
+        usdjpy = dict(zip(weeks, _asof_rate(spots, "USDJPY", weeks)))
+        out = {"weeks": weeks, "products": {}, "titles": names}
+        for g, rx in groups.items():
+            codes = [c for c, t in names.items() if re.search(rx, t, re.I)]
+            if not codes:
+                continue
+            sub = d[d["product"].isin(codes) & d["investor"].isin(who)]
+            piv = sub.groupby(["investor", "week_end"])["net"].sum()
+            out["products"][g] = {"codes": codes, **{who[i]: [None if (i, w) not in piv.index else round(float(piv[(i, w)]) / usdjpy[w], 0)
+                                                            for w in weeks] for i in who}}
+        flows["jpx_dv"] = out
     p = raw / "twse_weekly.csv"
     if p.exists():
         t = pd.read_csv(p).sort_values("week")

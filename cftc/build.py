@@ -101,6 +101,22 @@ def fetch(store, full=False):
 
 # --------------------------------------------------------------------------- build
 
+def _canon(col):
+    return re.sub(r"_+", "_", re.sub(r"_all$", "", col))
+
+
+def _harmonize(df, target):
+    """Give ICE fields the CFTC spelling of the same field. ICE files spell a
+    field differently across years (`_all` suffix, doubled underscores), so
+    variants of one field are merged into a single column."""
+    by_canon = {_canon(c): c for c in target}
+    out = {}
+    for c in df.columns:
+        name = by_canon.get(_canon(c), c)
+        out[name] = out[name].combine_first(df[c]) if name in out else df[c]
+    return pd.DataFrame(out)
+
+
 def _find(cols, pattern):
     rx = re.compile(rf"^{pattern}(_all)?$")
     hits = [c for c in cols if rx.match(c)]
@@ -179,7 +195,8 @@ def build(store, out):
     for kind in KINDS:
         ice = extra.load_ice(raw, kind)
         if ice is not None and len(ice):
-            data[("disagg", kind)] = pd.concat([data[("disagg", kind)], ice], ignore_index=True, sort=False)
+            base = data[("disagg", kind)]
+            data[("disagg", kind)] = pd.concat([base, _harmonize(ice, base.columns)], ignore_index=True, sort=False)
     n = len(idx)
     px = pd.read_csv(raw / "prices.csv.gz", index_col=0, parse_dates=True)
 

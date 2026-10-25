@@ -46,11 +46,11 @@ const store = {
   set(k, v) { try { localStorage.setItem('cftc.' + k, JSON.stringify(v)); } catch (e) { /* storage unavailable */ } },
 };
 const S = Object.assign({
-  kind: 'fut', role: 'spec', lb: 156, tab: 'overview', market: 'EUR', units: 'usd', range: 260,
+  kind: 'fut', role: 'spec', lb: 156, tab: 'conclusions', market: 'EUR', units: 'usd', range: 260,
   theme: 'riskon', legMode: 'theme', corrSrc: 'returns', corrOrient: true, corrLb: 156, corrCrowded: false,
   cols: 'core', comGroup: 'All', sort: {}, legacy: false,
-}, store.get('state', {}));
-const save = () => store.set('state', S);
+}, store.get('state2', {}));
+const save = () => store.set('state2', S);
 let customThemes = store.get('custom', []);
 let draftLegs = store.get('draft', []);
 
@@ -744,6 +744,8 @@ function initControls() {
     if (c) copyTable(c.dataset.copy, c);
     const g = e.target.closest('[data-go]');
     if (g) go(g.dataset.go);
+    const mkb = e.target.closest('[data-mk]');
+    if (mkb && MK[mkb.dataset.mk]) openMarket(mkb.dataset.mk);
   });
   const mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
   if (mq && mq.addEventListener) mq.addEventListener('change', () => render());
@@ -771,11 +773,15 @@ function render() {
   const sec = document.createElement('section');
   sec.className = 'sheet';
   main.appendChild(sec);
-  try {
-    (RENDER[S.tab] || RENDER.overview)(sec);
-  } catch (e) {
+  const fail = (e) => {
     console.error(e);
     sec.innerHTML = `<div class="banner">This view failed to render: ${esc(e.message)}</div>`;
+  };
+  try {
+    const p = (RENDER[S.tab] || RENDER.overview)(sec);
+    if (p && typeof p.then === 'function') p.catch(fail);
+  } catch (e) {
+    fail(e);
   }
 }
 function panel(title, { note = '', tools = '', body = '', id = '', bodyClass = 'panel-body' } = {}) {
@@ -1448,4 +1454,6 @@ async function boot() {
   if (!window.echarts) console.warn('ECharts did not load; tables still work.');
   route();
 }
-boot();
+/* more.js registers further tabs; start once every script has run */
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+else setTimeout(boot, 0);

@@ -62,10 +62,13 @@ def columns(ds):
 
 
 def wanted(col):
-    """Position, trader-count and concentration fields for all crops/years."""
+    """Position, trader-count and concentration fields for all crop years combined.
+
+    Old/other crop-year splits are suffixed ``_1``/``_2`` (or ``_old``/``_other``).
+    """
     if col in _ALWAYS:
         return True
-    if col.startswith(("change_in_", "pct_of_")) or col.endswith(("_old", "_other")):
+    if col.startswith(("change_in_", "pct_of_")) or col.endswith(("_old", "_other", "_1", "_2")):
         return False
     return "positions" in col or "postions" in col or col.startswith(("traders_", "conc_"))
 

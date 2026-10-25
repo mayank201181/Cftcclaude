@@ -92,6 +92,10 @@ def _apply(s, transform):
         return 1.0 / s
     if transform == "c":
         return s / 100.0
+    if transform == "100-":
+        return 100.0 - s
+    if transform.startswith("m"):
+        return s * float(transform[1:])
     return s
 
 

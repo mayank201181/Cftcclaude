@@ -8,7 +8,8 @@ Legacy report is pulled for every market as well (non-commercial / commercial).
 Prices convert contracts into USD. Each ``px`` entry is ``TICKER:transform``
 (Yahoo Finance symbol) and ``fred`` is a FRED series used as a last resort.
 Transforms turn the quote into the contract's own price in USD per unit:
-``x`` as quoted, ``inv`` reciprocal (USDJPY -> JPYUSD), ``c`` cents -> dollars.
+``x`` as quoted, ``inv`` reciprocal (USDJPY -> JPYUSD), ``c`` cents -> dollars,
+``m<k>`` multiply by k (ETF proxy for an index), ``100-`` 100 minus a yield.
 USD value of one contract = price * ``mult`` (converted from ``ccy`` when the
 contract is not USD-denominated), or ``fixed`` for STIR futures.
 """
@@ -60,6 +61,8 @@ MARKETS = [
     M("MBT", "Micro bitcoin (CME)", "133742", "Crypto", "Bitcoin", "tff", 0.1, ("BTC-USD:x", "BTC=F:x"), "CBBTCUSD:x", "0.1 BTC"),
     M("ETH", "Ether (CME)", "146021", "Crypto", "Ether", "tff", 50, ("ETH-USD:x",), "CBETHUSD:x", "50 ETH"),
     M("MET", "Micro ether (CME)", "146022", "Crypto", "Ether", "tff", 0.1, ("ETH-USD:x",), "CBETHUSD:x", "0.1 ETH"),
+    M("SOL", "Solana (CME)", "177741", "Crypto", "Altcoins", "tff", 500, ("SOL-USD:x",), None, "500 SOL"),
+    M("XRP", "XRP (CME)", "176740", "Crypto", "Altcoins", "tff", 50_000, ("XRP-USD:x",), None, "50,000 XRP"),
     # ---------------------------------------------------------------- Rates (CBOT / CME)
     M("UST2", "2Y T-note", "042601", "Rates", "UST futures", "tff", 2_000, ("ZT=F:x",), None, "USD 200k face", dv01=39),
     M("UST5", "5Y T-note", "044601", "Rates", "UST futures", "tff", 1_000, ("ZF=F:x",), None, "USD 100k face", dv01=46),
@@ -67,7 +70,10 @@ MARKETS = [
     M("ULTRA10", "Ultra 10Y T-note", "043607", "Rates", "UST futures", "tff", 1_000, ("TN=F:x",), None, "USD 100k face", dv01=91),
     M("BOND", "T-bond", "020601", "Rates", "UST futures", "tff", 1_000, ("ZB=F:x",), None, "USD 100k face", dv01=128),
     M("ULTRA", "Ultra T-bond", "020604", "Rates", "UST futures", "tff", 1_000, ("UB=F:x",), None, "USD 100k face", dv01=205),
-    M("SOFR3", "3M SOFR", "134741", "Rates", "STIR", "tff", px=("SR3=F:x",), unit="USD 1m", fixed=1_000_000, dv01=25),
+    M("SOFR3", "3M SOFR", "134741", "Rates", "STIR", "tff", px=("SR3=F:x",), fred="DGS2:100-", unit="USD 1m",
+      fixed=1_000_000, dv01=25, note="Price proxy when SR3 is unavailable: 100 minus the 2Y Treasury yield"),
+    M("SOFR1", "1M SOFR", "134742", "Rates", "STIR", "tff", px=("SR1=F:x",), fred="DGS2:100-", unit="USD 5m",
+      fixed=5_000_000, dv01=41.67, note="Price proxy when SR1 is unavailable: 100 minus the 2Y Treasury yield"),
     M("FF", "30D fed funds", "045601", "Rates", "STIR", "tff", px=("ZQ=F:x",), unit="USD 5m", fixed=5_000_000, dv01=41.67),
     # ---------------------------------------------------------------- Equity indices
     M("SPX", "S&P 500 (consolidated)", "13874+", "Equities", "US", "tff", 50, ("ES=F:x", "^GSPC:x"), "SP500:x", "E-mini equivalents",
@@ -78,15 +84,20 @@ MARKETS = [
     M("MID", "S&P 400 MidCap E-mini", "33874A", "Equities", "US", "tff", 100, ("EMD=F:x", "^MID:x"), None, "USD 100 x index"),
     M("NKY", "Nikkei 225 (USD)", "240741", "Equities", "Japan", "tff", 5, ("NKD=F:x", "^N225:x"), "NIKKEI225:x", "USD 5 x index"),
     M("NKYJ", "Nikkei 225 (JPY)", "240743", "Equities", "Japan", "tff", 500, ("NIY=F:x", "^N225:x"), "NIKKEI225:x", "JPY 500 x index", ccy="JPY"),
-    M("MSEM", "MSCI EM", "244741", "Equities", "Global", "tff", 50, ("MME=F:x",), None, "USD 50 x index"),
-    M("MSEAFE", "MSCI EAFE", "244042", "Equities", "Global", "tff", 50, ("MFS=F:x",), None, "USD 50 x index"),
+    M("MSEM", "MSCI EM (ICE)", "244042", "Equities", "Global", "tff", 50, ("MME=F:x", "EEM:m26.0"), None, "USD 50 x index",
+      note="Index level proxied by EEM x 26 when the future is unavailable"),
+    M("MSEAFE", "MSCI EAFE (ICE)", "244041", "Equities", "Global", "tff", 50, ("MFS=F:x", "EFA:m30.2"), None,
+      "USD 50 x index", note="Index level proxied by EFA x 30.2 when the future is unavailable"),
     M("VIX", "VIX futures", "1170E1", "Equities", "Volatility", "tff", 1_000, ("^VIX:x",), "VIXCLS:x", "USD 1k x VIX",
       note="Notional uses spot VIX; futures usually trade above it"),
     # ---------------------------------------------------------------- Energy
     M("WTI", "WTI crude (NYMEX)", "067651", "Commodities", "Energy", "disagg", 1_000, ("CL=F:x",), "DCOILWTICO:x", "1,000 bbl"),
+    M("WTIICE", "WTI crude (ICE)", "067411", "Commodities", "Energy", "disagg", 1_000, ("CL=F:x",), "DCOILWTICO:x", "1,000 bbl"),
     M("BRENT", "Brent last day (NYMEX)", "06765T", "Commodities", "Energy", "disagg", 1_000, ("BZ=F:x",), "DCOILBRENTEU:x", "1,000 bbl",
       note="NYMEX financial Brent; ICE Brent is not in the CFTC report"),
     M("NATGAS", "Henry Hub nat gas (NYMEX)", "023651", "Commodities", "Energy", "disagg", 10_000, ("NG=F:x",), "DHHNGSP:x", "10,000 MMBtu"),
+    M("NGICE", "Henry Hub nat gas (ICE LD1)", "023391", "Commodities", "Energy", "disagg", 2_500, ("NG=F:x",), "DHHNGSP:x",
+      "2,500 MMBtu", note="A quarter of the NYMEX contract"),
     M("RBOB", "RBOB gasoline", "111659", "Commodities", "Energy", "disagg", 42_000, ("RB=F:x",), None, "42,000 gal"),
     M("ULSD", "NY Harbor ULSD", "022651", "Commodities", "Energy", "disagg", 42_000, ("HO=F:x",), None, "42,000 gal"),
     # ---------------------------------------------------------------- Metals
@@ -176,7 +187,7 @@ THEMES = [
                ("BOND", 1, "am"), ("ULTRA", 1, "am"), ("SOFR3", 1)]),
     dict(key="fedcuts", name="Fed cuts (STIR)",
          desc="Leveraged funds long SOFR, fed funds and 2Y futures.",
-         legs=[("SOFR3", 1), ("FF", 1), ("UST2", 1)]),
+         legs=[("SOFR3", 1), ("SOFR1", 1), ("FF", 1), ("UST2", 1)]),
     dict(key="steepener", name="Curve steepener",
          desc="Leveraged funds long the front end against the long end.",
          legs=[("UST2", 1), ("UST5", 1), ("BOND", -1), ("ULTRA", -1)]),
@@ -211,8 +222,8 @@ THEMES = [
          desc="Long sugar, coffee, cocoa and cotton.",
          legs=[("SUGAR", 1), ("COFFEE", 1), ("COCOA", 1), ("COTTON", 1)]),
     dict(key="crypto", name="Crypto",
-         desc="Long CME bitcoin and ether futures.",
-         legs=[("BTC", 1), ("MBT", 1), ("ETH", 1), ("MET", 1)]),
+         desc="Long CME bitcoin, ether, solana and XRP futures.",
+         legs=[("BTC", 1), ("MBT", 1), ("ETH", 1), ("MET", 1), ("SOL", 1), ("XRP", 1)]),
     dict(key="emfx", name="EM FX",
          desc="Long MXN, BRL and ZAR.",
          legs=[("MXN", 1), ("BRL", 1), ("ZAR", 1)]),

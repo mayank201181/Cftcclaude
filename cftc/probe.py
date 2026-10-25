@@ -33,33 +33,25 @@ def candidates():
     days = _days_back(3)
     d0 = days[0]
     yr = dt.date.today().year
+    jx = "https://www.jpx.co.jp/english/markets/statistics-"
     c = {
-        # ICE Futures Europe COT (CFTC-style CSV) and ICE Endex MiFID report pages
-        "ice_hist_cur": f"https://www.ice.com/publicdocs/futures/COTHist{yr}.csv",
-        "ice_hist_prev": f"https://www.ice.com/publicdocs/futures/COTHist{yr - 1}.csv",
-        "ice_hist_2011": "https://www.ice.com/publicdocs/futures/COTHist2011.csv",
-        "ice_report_center": "https://www.ice.com/report-center/category/commitment-of-trader",
-        "ice_report_122": "https://www.ice.com/marketdata/reports/122",
-        "ice_report_234": "https://www.ice.com/marketdata/reports/234",
-        # DTCC public dissemination (OTC FX options with strikes)
-        **{f"dtcc_fx_{d:%Y%m%d}": f"https://pddata.dtcc.com/ppd/api/report/cumulative/cftc/CFTC_CUMULATIVE_FOREX_{d:%Y_%m_%d}.zip" for d in days[:2]},
-        "dtcc_dashboard": "https://pddata.dtcc.com/ppd/cftcdashboard",
-        "dtcc_s3_legacy": f"https://kgc0418-tdw-data-0.s3.amazonaws.com/cftc/eod/CFTC_CUMULATIVE_FOREX_{d0:%Y_%m_%d}.zip",
-        # JPX investor-type statistics
-        "jpx_eq_investor": "https://www.jpx.co.jp/english/markets/statistics-equities/investor-type/index.html",
-        "jpx_deriv_investor": "https://www.jpx.co.jp/english/markets/statistics-derivatives/sector/index.html",
-        # Asian foreign-flow proxies
-        "twse_bfi82u": f"https://www.twse.com.tw/rwd/en/fund/BFI82U?type=day&dayDate={d0:%Y%m%d}&response=json",
-        "twse_bfi82u_old": f"https://www.twse.com.tw/fund/BFI82U?response=json&dayDate={d0:%Y%m%d}&type=day",
-        "nsdl_fpi_latest": "https://www.fpi.nsdl.co.in/web/Reports/Latest.aspx",
-        "nse_fiidii": "https://www.nseindia.com/api/fiidiiTradeReact",
-        "krx_page": "https://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd?menuId=MDC0201020302",
-        # CME daily settlements / volume and open interest (JSON behind the website)
-        "cme_settle_cl": f"https://www.cmegroup.com/CmeWS/mvc/Settlements/Futures/Settlements/425/FUT?strategy=DEFAULT&tradeDate={d0:%m/%d/%Y}&pageSize=500",
-        "cme_vol_cl": f"https://www.cmegroup.com/CmeWS/mvc/Volume/Details/F/425/{d0:%Y%m%d}/P?tradeDate={d0:%Y%m%d}&pageSize=500",
-        "cme_opt_eur": f"https://www.cmegroup.com/CmeWS/mvc/Settlements/Options/Settlements/58/OOF?strategy=DEFAULT&tradeDate={d0:%m/%d/%Y}&pageSize=500",
-        "cme_bulletin_dir": "https://www.cmegroup.com/ftp/bulletin/",
+        "ice_cot_links": "https://www.ice.com/cot-report-links",
+        "ice_hist_2019": "https://www.ice.com/publicdocs/futures/COTHist2019.csv",
+        "jpx_eq_xlsx": jx + "equities/investor-type/vk0khi000002qxwh-att/stock_1_w_20261013_20261016.xlsx",
+        "jpx_dv_csv": jx + "derivatives/sector/vk0khi000002qvt9-att/Tousi_DV_W_20261013_20261016.csv",
+        "jpx_dv_tate": jx + "derivatives/sector/tvdivq00000020o8-att/Tategyoku_W_20260413_20260417.xlsx",
+        "jpx_eq_archive": jx + "equities/investor-type/00-00-archives-01.html",
+        "jpx_dv_archive": jx + "derivatives/sector/01-archives-02.html",
+        "twse_day_1022": "https://www.twse.com.tw/rwd/en/fund/BFI82U?type=day&dayDate=20261022&response=json",
+        "twse_week": "https://www.twse.com.tw/rwd/en/fund/BFI82U?type=week&weekDate=20261019&response=json",
+        "twse_month": "https://www.twse.com.tw/rwd/en/fund/BFI82U?type=month&monthDate=20260901&response=json",
+        "twse_zh_day": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?type=day&dayDate=20261022&response=json",
+        "nsdl_archive": "https://www.fpi.nsdl.co.in/web/Reports/Archive.aspx",
+        "nsdl_yearwise": "https://www.fpi.nsdl.co.in/web/Reports/Yearwise.aspx?RptType=6",
     }
+    for t in ["BZ=F", "QS=F", "LGO=F", "C=F", "RC=F", "SW=F", "LCC=F", "KC=F", "CNH=X", "KRW=X", "TWD=X",
+              "INR=X", "SGD=X", "EURUSD=X", "JPY=X", "^TWII", "^KS11", "^NSEI", "^TPX"]:
+        c["yh_" + t] = f"https://query2.finance.yahoo.com/v8/finance/chart/{t}?range=5d&interval=1d"
     return c
 
 
@@ -90,6 +82,8 @@ def main(out):
             rec.update(status=r.status_code, final_url=r.url, ctype=r.headers.get("content-type"), size=len(body))
             if url.endswith(".zip") and r.status_code == 200:
                 rec["zip"] = _summarize_zip(body)
+            elif url.endswith(".xlsx") and r.status_code == 200:
+                (out / f"{name}.xlsx").write_bytes(body)
             else:
                 text = body[:300_000].decode("utf-8", "replace")
                 (out / f"{name}.txt").write_text(text)

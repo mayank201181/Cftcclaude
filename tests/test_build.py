@@ -92,8 +92,9 @@ def test_build_writes_consistent_files(store):
         assert set(rec["L"]) == cats, key
         assert all(len(v) == n - rec["o"] for v in rec["L"].values())
         assert len(rec["oi"]) == n - rec["o"]
-    # STIR notional is fixed; yen Nikkei converts through JPY
-    assert meta["npc"]["SOFR3"]["v"][-1] == 1_000_000
+    # rates are 10Y-equivalent (DV01-weighted); yen Nikkei converts through JPY
+    ten = meta["npc"]["UST10"]["v"][-1]
+    assert meta["npc"]["SOFR3"]["v"][-1] == pytest.approx(ten * 25 / 64, rel=1e-4)
     assert meta["npc"]["NKYJ"]["v"][-1] == pytest.approx(2 * 500 * 2, rel=1e-3)
     assert (store / "site" / "index.html").exists()
     assert json.loads((site / "detail" / "EUR.json").read_text())["fut"]["T"]["lev"]

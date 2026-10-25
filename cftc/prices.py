@@ -108,7 +108,7 @@ def market_prices(markets):
     cache, out, sources = {}, {}, {}
     for m in markets:
         candidates = [("yahoo", t) for t in m.px] + ([("fred", m.fred)] if m.fred else [])
-        best = None
+        best, tried = None, []
         for src, spec in candidates:
             ticker, _, transform = spec.partition(":")
             ck = (src, ticker)
@@ -120,16 +120,20 @@ def market_prices(markets):
                         s = alt
                 cache[ck] = s
             s = cache[ck]
+            tried.append(f"{src}:{ticker}=" + ("none" if s is None else f"{len(s)} obs to {s.index.max().date()}"))
             if _fresh(s):
                 best = (src, ticker, _apply(s, transform or "x"))
                 break
             if s is not None and len(s) > 20 and best is None:
                 best = (src, ticker, _apply(s, transform or "x"))  # stale, keep looking
         if best is None:
-            log.warning("no price for %s", m.key)
+            log.warning("no price for %s (%s)", m.key, "; ".join(tried))
+            sources[m.key] = {"source": None, "tried": tried}
             continue
         out[m.key] = best[2]
         sources[m.key] = {"source": best[0], "ticker": best[1], "last": str(best[2].index.max().date())}
+        if len(tried) > 1:
+            sources[m.key]["tried"] = tried
         log.info("price %-8s %-6s %-10s last %s %.6g", m.key, best[0], best[1], sources[m.key]["last"],
                  best[2].iloc[-1])
     return pd.DataFrame(out).sort_index(), sources

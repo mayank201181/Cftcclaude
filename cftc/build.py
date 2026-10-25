@@ -90,7 +90,7 @@ def fetch(store, full=False):
     px, sources = prices.market_prices(config.MARKETS)
     px.to_csv(raw / "prices.csv.gz", compression="gzip", float_format="%.8g")
     status["prices"] = sources
-    status["missing_prices"] = [m.key for m in config.MARKETS if m.key not in sources]
+    status["missing_prices"] = [m.key for m in config.MARKETS if not (sources.get(m.key) or {}).get("source")]
     status_path.write_text(json.dumps(status, indent=1))
     return status
 
@@ -150,6 +150,16 @@ def _side_arrays(frame, report, stems):
     return L, S
 
 
+def _document(fragment):
+    """Wrap the page fragment (as published to claude.ai) in a standalone document."""
+    head_end = fragment.index("</style>") + len("</style>")
+    return ("<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n"
+            "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\">\n"
+            "<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}"
+            "body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>\n"
+            + fragment[:head_end] + "\n</head>\n<body>\n" + fragment[head_end:] + "\n</body>\n</html>\n")
+
+
 def build(store, out):
     store, out = Path(store), Path(out)
     raw = store / "raw"
@@ -166,9 +176,15 @@ def build(store, out):
 
     # contract price (USD per unit) on each report date, and USD value per contract
     cp = {k: asof(px[k], idx) for k in px.columns}
+    # Rates use 10Y-note-equivalent notional (DV01-weighted), so a SOFR or 2Y
+    # contract is not counted at face value next to equities and FX.
     npc = {}
+    ten = config.BY_KEY["UST10"]
+    ten_npc = cp[ten.key] * ten.mult if ten.key in cp else np.full(n, np.nan)
     for m in config.MARKETS:
-        if m.fixed:
+        if m.dv01:
+            npc[m.key] = ten_npc * (m.dv01 / ten.dv01)
+        elif m.fixed:
             npc[m.key] = np.full(n, float(m.fixed))
         elif m.key in cp:
             v = cp[m.key] * m.mult
@@ -231,7 +247,8 @@ def build(store, out):
     markets = []
     for m in config.MARKETS:
         d = m.to_dict()
-        d["price_source"] = status.get("prices", {}).get(m.key)
+        src = status.get("prices", {}).get(m.key) or {}
+        d["price_source"] = src if src.get("source") else None
         d["has"] = [k for k in KINDS if m.key in files[k]]
         d["last_report"] = snap_dates.get((m.key, "fut"))
         if m.key in px.columns:
@@ -274,8 +291,9 @@ def build(store, out):
             dump(d, site / "data" / "detail" / f"{key}.json")
     web = Path(__file__).resolve().parent.parent / "web"
     for f in web.iterdir():
-        if f.is_file():
+        if f.is_file() and f.name != "index.html":
             shutil.copy2(f, site / f.name)
+    (site / "index.html").write_text(_document((web / "index.html").read_text()))
     sizes = {p.name: p.stat().st_size for p in (site / "data").glob("*.json")}
     log.info("built %s: latest %s, %d markets, sizes %s", site, latest, len(files["fut"]), sizes)
     return meta

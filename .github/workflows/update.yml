@@ -66,8 +66,10 @@ jobs:
         with:
           path: datastore/site
 
+  # Optional public copy on GitHub Pages: set Pages to "GitHub Actions" in the
+  # repo settings and add a repository variable PAGES_ENABLED=true.
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && vars.PAGES_ENABLED == 'true'
     needs: build
     runs-on: ubuntu-latest
     continue-on-error: true

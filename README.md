@@ -48,6 +48,15 @@ GitHub Actions (weekly) ──> CFTC Socrata API  (TFF, Disaggregated, Legacy; f
 - `.github/workflows/update.yml` - runs Fridays after the 15:30 ET release, with
   retries Saturday and Monday, and on every push to the pipeline or page.
 
+## Hosting and refresh
+
+- The dashboard is published as a private claude.ai artifact. A scheduled Claude task
+  republishes it from the `data` branch on Tuesday and Saturday mornings (SGT).
+- The `data` branch is refreshed by the workflow's cron, which GitHub only runs from
+  the default branch, so the workflow must be on `main`.
+- For an optional public copy on GitHub Pages, set Pages to "GitHub Actions" in the
+  repo settings and add the repository variable `PAGES_ENABLED=true`.
+
 ## Run locally
 
 ```bash

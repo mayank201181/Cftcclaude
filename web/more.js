@@ -318,12 +318,15 @@ function dontMiss() {
   for (const r of rows) {
     const name = r.m.name, p = r.p, rr = rollRank(r.key, S.kind, r.cl, S.lb), p0 = rr[r.t - 1];
     const at = `at the ${ord(p)} percentile (net ${fmtN(r.pct, 1, true)}% of OI)`;
-    if (p >= 90 && r.r4 <= -0.02) add('critical', 'Crowded and offside', r.key, `${name}: ${ROLES[S.role].short} ${at}, the long side of their range, while the contract is ${fmtChg(r.r4)} over 4 weeks.`, (p - 50) * -r.r4 * 100);
-    if (p <= 10 && r.r4 >= 0.02) add('critical', 'Crowded and offside', r.key, `${name}: ${ROLES[S.role].short} ${at}, the short side of their range, while the contract is ${fmtChg(r.r4)} over 4 weeks.`, (50 - p) * r.r4 * 100);
-    if ((p >= 95 && !(p0 >= 95)) || (p <= 5 && !(p0 <= 5))) add('serious', 'New extreme', r.key, `${name}: ${ROLES[S.role].short} moved to the ${ord(p)} percentile (${LB_LABEL[S.lb]}) from the ${ord(p0)} a week earlier; net ${fmtN(r.pct, 1, true)}% of OI.`, Math.abs(p - 50));
+    // a high percentile on a net short (basis trades, hedgers) is "least short", not a crowded long
+    const longX = p >= 90 && r.pct > 0, shortX = p <= 10 && r.pct < 0;
+    const odd = (p >= 95 && r.pct < 0) ? `, still net short, so the least short in ${LB_LABEL[S.lb]}` : (p <= 5 && r.pct > 0) ? `, still net long, so the least long in ${LB_LABEL[S.lb]}` : '';
+    if (longX && r.r4 <= -0.02) add('critical', 'Crowded and offside', r.key, `${name}: ${ROLES[S.role].short} ${at}, the long side of their range, while the contract is ${fmtChg(r.r4)} over 4 weeks.`, (p - 50) * -r.r4 * 100);
+    if (shortX && r.r4 >= 0.02) add('critical', 'Crowded and offside', r.key, `${name}: ${ROLES[S.role].short} ${at}, the short side of their range, while the contract is ${fmtChg(r.r4)} over 4 weeks.`, (50 - p) * r.r4 * 100);
+    if ((p >= 95 && !(p0 >= 95)) || (p <= 5 && !(p0 <= 5))) add('serious', 'New extreme', r.key, `${name}: ${ROLES[S.role].short} moved to the ${ord(p)} percentile (${LB_LABEL[S.lb]}) from the ${ord(p0)} a week earlier; net ${fmtN(r.pct, 1, true)}% of OI${odd}.`, Math.abs(p - 50) - (odd ? 25 : 0));
     if (fin(r.fz) && Math.abs(r.fz) >= 2.5) add('serious', 'Big weekly flow', r.key, `${name}: ${fmtUSD(r.flow, true)} (${r.driver ? r.driver.label.toLowerCase() : 'flow'}), ${fmtN(r.fz, 1, true)} standard deviations.`, Math.abs(r.fz) * 10);
     if (fin(r.rsr) && Math.abs(r.rsr) >= 0.03 && (p >= 85 || p <= 15)) {
-      const against = (p >= 85 && r.rsr < 0) || (p <= 15 && r.rsr > 0);
+      const against = (p >= 85 && r.pct > 0 && r.rsr < 0) || (p <= 15 && r.pct < 0 && r.rsr > 0);
       if (against) add('serious', 'Hit since Tuesday', r.key, `${name} has moved ${fmtChg(r.rsr)} since the report date against positioning at the ${ord(p)} percentile.`, Math.abs(r.rsr) * 300);
     }
   }
@@ -348,7 +351,7 @@ function dontMiss() {
   if (DATA.combo) {
     for (const r of rows) {
       const o = optFor(r.key, r.cl);
-      if (o && o.share >= 10 && fin(o.P) && (o.P >= 97 || o.P <= 3)) add('info', 'Options', r.key, `${r.m.name}: ${ROLES[S.role].short} options delta at the ${ord(o.P)} percentile (${fmtK(o.od, true)} futures-equivalents).`, Math.abs(o.P - 50) / 2);
+      if (o && o.share >= 10 && fin(o.P) && (o.P >= 97 || o.P <= 3) && !AGG_SKIP.has(r.key)) add('info', 'Options', r.key, `${r.m.name}: ${ROLES[S.role].short} options delta at the ${ord(o.P)} percentile (${fmtK(o.od, true)} futures-equivalents).`, Math.abs(o.P - 50) / 2);
     }
   }
   out.sort((a, b) => SEV_ORDER[a.sev] - SEV_ORDER[b.sev] || b.score - a.score);

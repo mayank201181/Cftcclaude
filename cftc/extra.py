@@ -427,6 +427,11 @@ def _usd_per(ccy, spot_last):
     return np.nan
 
 
+def _cross(pair, spot_last):
+    v = _usd_per(pair[:3], spot_last) / _usd_per(pair[3:], spot_last)
+    return float(f"{v:.6g}") if v == v else None
+
+
 def _asof_rate(spots, pair, dates):
     if pair not in spots:
         return np.full(len(dates), np.nan)
@@ -454,8 +459,15 @@ def build_outputs(raw, data_dir):
         inv = np.array([x[1] for x in std], dtype=bool)
         df.loc[inv, "strike"] = 1.0 / df.loc[inv, "strike"]
         df.loc[inv, "cp"] = df.loc[inv, "cp"].map({"C": "P", "P": "C"})
-        base = df["spair"].str[:3]
-        per = base.map(lambda c: _usd_per(c, spot_last))
+        # some trades quote the strike in market convention whatever the reported currency order:
+        # keep whichever of K and 1/K sits nearer spot (crosses priced off the USD legs)
+        ref = df["spair"].map(lambda sp: spot_last.get(sp) or _usd_per(sp[:3], spot_last) / _usd_per(sp[3:], spot_last))
+        k = df["strike"].astype(float)
+        ref = ref.fillna(np.exp(np.log(k).groupby(df["spair"]).transform("median")))  # no spot: the typical strike
+        swap = (np.log(1.0 / k / ref).abs() < np.log(k / ref).abs()).fillna(False)
+        df.loc[swap, "strike"] = 1.0 / k[swap]
+        # base_amt is in the reported base currency, which inversion moved to the quote side
+        per = df["pair"].str[:3].map(lambda c: _usd_per(c, spot_last))
         df["usd_n"] = df["usd"].fillna(df["base_amt"] * per)
         fx["asof"] = df["day"].max() if len(df) else None
         totals = df.groupby("spair")["usd_n"].sum().sort_values(ascending=False)
@@ -464,7 +476,7 @@ def build_outputs(raw, data_dir):
                 usd=("usd_n", "sum"), n=("id", "count"), capped=("capped", "sum")).reset_index()
             g = g[g["usd"] > 0]
             fx["pairs"][pair] = {
-                "spot": spot_last.get(pair, spot_last.get(pair.replace("CNY", "CNH"))),
+                "spot": spot_last.get(pair, spot_last.get(pair.replace("CNY", "CNH"))) or _cross(pair, spot_last),
                 "total": float(totals[pair]),
                 "rows": [[r.expiry, float(f"{r.strike:.6g}"), r.cp, round(r.usd / 1e6, 1), int(r.n), int(r.capped)]
                          for r in g.itertuples()],

@@ -33,6 +33,7 @@ class Market:
     dv01: float | None = None   # approx. USD per basis point per contract
     disp: str = "x"       # display convention: x | inv (USD-base FX pairs) | cents
     note: str = ""
+    source: str = "cftc"  # cftc | ice (ICE Futures Europe COT, keyed by market name)
 
     def to_dict(self):
         d = asdict(self)
@@ -102,6 +103,13 @@ MARKETS = [
       "2,500 MMBtu", note="A quarter of the NYMEX contract"),
     M("RBOB", "RBOB gasoline", "111659", "Commodities", "Energy", "disagg", 42_000, ("RB=F:x",), None, "42,000 gal"),
     M("ULSD", "NY Harbor ULSD", "022651", "Commodities", "Energy", "disagg", 42_000, ("HO=F:x",), None, "42,000 gal"),
+    # ---------------------------------------------------------------- ICE Futures Europe (own COT report)
+    M("BRENTICE", "Brent crude (ICE)", "ICE Brent Crude Futures", "Commodities", "Energy", "disagg", 1_000, ("BZ=F:x",),
+      "DCOILBRENTEU:x", "1,000 bbl", note="ICE Futures Europe COT", source="ice"),
+    M("GASOIL", "Gasoil (ICE)", "ICE Gasoil Futures", "Commodities", "Energy", "disagg", 100, ("HO=F:m312.9",), None,
+      "100 t", note="ICE Futures Europe COT; USD/t proxied by NY ULSD x 312.9 gal/t", source="ice"),
+    M("DUBAI", "Dubai 1st line (ICE)", "ICE Dubai 1st Line Futures", "Commodities", "Energy", "disagg", 1_000, ("BZ=F:x",),
+      None, "1,000 bbl", note="ICE Futures Europe COT; USD notional proxied by Brent", source="ice"),
     # ---------------------------------------------------------------- Metals
     M("GOLD", "Gold", "088691", "Commodities", "Metals", "disagg", 100, ("GC=F:x",), None, "100 oz"),
     M("SILVER", "Silver", "084691", "Commodities", "Metals", "disagg", 5_000, ("SI=F:x",), None, "5,000 oz"),
@@ -121,6 +129,14 @@ MARKETS = [
     M("COCOA", "Cocoa", "073732", "Commodities", "Softs", "disagg", 10, ("CC=F:x",), None, "10 t"),
     M("COTTON", "Cotton No. 2", "033661", "Commodities", "Softs", "disagg", 50_000, ("CT=F:c",), None, "50,000 lb", disp="cents"),
     M("OJ", "Orange juice", "040701", "Commodities", "Softs", "disagg", 15_000, ("OJ=F:c",), None, "15,000 lb", disp="cents"),
+    M("WSUGAR", "White sugar (ICE London)", "ICE White Sugar Futures", "Commodities", "Softs", "disagg", 50,
+      ("SB=F:m22.0462",), None, "50 t", note="ICE Futures Europe COT; USD/t proxied by raw sugar No. 11", source="ice"),
+    M("LCOCOA", "Cocoa (ICE London)", "ICE Cocoa Futures", "Commodities", "Softs", "disagg", 10, ("CC=F:x",), None,
+      "10 t", note="ICE Futures Europe COT; USD/t proxied by NY cocoa", source="ice"),
+    M("ROBUSTA", "Robusta coffee (ICE London)", "ICE Robusta Coffee Futures", "Commodities", "Softs", "disagg", 10, (),
+      None, "10 t", note="ICE Futures Europe COT; no free price feed, so no USD notional", source="ice"),
+    M("FEEDWHEAT", "Feed wheat (ICE London)", "ICE Wheat Futures", "Commodities", "Grains", "disagg", 100, (), None,
+      "100 t", note="ICE Futures Europe COT; no free price feed, so no USD notional", source="ice"),
     # ---------------------------------------------------------------- Livestock
     M("LCATTLE", "Live cattle", "057642", "Commodities", "Livestock", "disagg", 40_000, ("LE=F:c",), None, "40,000 lb", disp="cents"),
     M("FCATTLE", "Feeder cattle", "061641", "Commodities", "Livestock", "disagg", 50_000, ("GF=F:c",), None, "50,000 lb", disp="cents"),
@@ -128,6 +144,16 @@ MARKETS = [
 ]
 
 BY_KEY = {m.key: m for m in MARKETS}
+
+# Spot FX (Yahoo) for FX option expiries and for converting Asian flows to USD.
+# Pairs are quoted in market convention; values are units of quote per base.
+SPOTS = {
+    "EURUSD": "EURUSD=X", "USDJPY": "JPY=X", "GBPUSD": "GBPUSD=X", "AUDUSD": "AUDUSD=X", "NZDUSD": "NZDUSD=X",
+    "USDCAD": "CAD=X", "USDCHF": "CHF=X", "USDMXN": "MXN=X", "USDBRL": "BRL=X", "USDZAR": "ZAR=X",
+    "USDCNH": "CNH=X", "USDKRW": "KRW=X", "USDTWD": "TWD=X", "USDINR": "INR=X", "USDSGD": "SGD=X",
+    "USDIDR": "IDR=X", "USDTHB": "THB=X", "USDPHP": "PHP=X", "EURJPY": "EURJPY=X", "AUDJPY": "AUDJPY=X",
+    "EURGBP": "EURGBP=X", "EURCHF": "EURCHF=X", "USDNOK": "NOK=X", "USDSEK": "SEK=X",
+}
 
 # Trader categories. "nr" (non-reportable) is identical across the three reports.
 CATEGORIES = {
@@ -212,8 +238,8 @@ THEMES = [
          desc="Short VIX futures, long S&P and Nasdaq.",
          legs=[("VIX", -1), ("SPX", 1), ("NDX", 1)]),
     dict(key="energy", name="Energy complex",
-         desc="Long crude, products and natural gas.",
-         legs=[("WTI", 1), ("BRENT", 1), ("RBOB", 1), ("ULSD", 1), ("NATGAS", 1)]),
+         desc="Long crude (WTI and ICE Brent), products (RBOB, ULSD, ICE gasoil) and natural gas.",
+         legs=[("WTI", 1), ("BRENTICE", 1), ("RBOB", 1), ("ULSD", 1), ("GASOIL", 1), ("NATGAS", 1)]),
     dict(key="precious", name="Precious metals",
          desc="Long gold, silver, platinum and palladium.",
          legs=[("GOLD", 1), ("SILVER", 1), ("PLAT", 1), ("PALL", 1)]),

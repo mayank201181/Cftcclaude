@@ -1,5 +1,6 @@
 """Offline tests: synthetic CFTC data through the build step."""
 import json
+import re
 
 import numpy as np
 import pandas as pd
@@ -27,6 +28,11 @@ FIELDS = {
 }
 
 
+# ICE spells the same fields with an `_all` suffix and single underscores
+ICE_FIELDS = [re.sub(r"_+", "_", f) if f.endswith("_all") else re.sub(r"_+", "_", f) + "_all" for f in FIELDS["disagg"]]
+ICE_FIELDS += ["swap__positions_short_all", "prod_merc_positions_long"]   # older files spell some fields like the CFTC
+
+
 def _report(report, rng):
     rows = []
     codes = build._codes(report)
@@ -49,6 +55,18 @@ def store(tmp_path):
     for (report, kind), ds in socrata.DATASETS.items():
         _report(report, rng).to_csv(raw / f"{report}_{kind}.csv.gz", index=False, compression="gzip")
         status["cftc"][f"{report}_{kind}"] = {"dataset": ds, "latest": "2007-02-20", "missing_codes": []}
+    # ICE Futures Europe rows use the disaggregated layout, keyed by market name
+    ice = []
+    for kind in ("fut", "combo"):
+        for m in config.MARKETS:
+            if m.source != "ice":
+                continue
+            for d in DATES + pd.Timedelta(days=1):   # one day off the CFTC grid: aligned by the build
+                r = {socrata.DATE: d, socrata.CODE: m.code, "kind": kind, "open_interest_all": 50_000}
+                for f in ICE_FIELDS:
+                    r[f] = rng.integers(0, 20_000) if "positions" in f else rng.integers(1, 40)
+                ice.append(r)
+    pd.DataFrame(ice).to_csv(raw / "ice_cot.csv.gz", index=False, compression="gzip")
     days = pd.date_range("2005-12-01", DATES[-1], freq="B")
     px = pd.DataFrame({m.key: np.linspace(1, 2, len(days)) for m in config.MARKETS}, index=days)
     px.to_csv(raw / "prices.csv.gz", compression="gzip")
@@ -88,7 +106,7 @@ def test_build_writes_consistent_files(store):
     n = len(meta["dates"])
     for key, rec in fut.items():
         m = config.BY_KEY[key]
-        cats = set(config.CATEGORIES[m.report]) | {"nc", "cm"}
+        cats = set(config.CATEGORIES[m.report]) | ({"nc", "cm"} if m.source == "cftc" else set())
         assert set(rec["L"]) == cats, key
         assert all(len(v) == n - rec["o"] for v in rec["L"].values())
         assert len(rec["oi"]) == n - rec["o"]
@@ -98,3 +116,7 @@ def test_build_writes_consistent_files(store):
     assert meta["npc"]["NKYJ"]["v"][-1] == pytest.approx(2 * 500 * 2, rel=1e-3)
     assert (store / "site" / "index.html").exists()
     assert json.loads((site / "detail" / "EUR.json").read_text())["fut"]["T"]["lev"]
+    assert len(json.loads((site / "daily.json").read_text())["dates"]) > 100
+    assert fut["BRENTICE"]["L"]["mm"][-1] is not None
+    assert set(fut["GOLD"]["L"]) == {"pm", "sd", "mm", "oth", "nr", "nc", "cm"}
+    assert set(fut["BRENTICE"]["L"]) == {"pm", "sd", "mm", "oth", "nr"}

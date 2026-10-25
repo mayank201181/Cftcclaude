@@ -18,12 +18,13 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import config, prices, socrata
+from . import config, extra, prices, socrata
 
 log = logging.getLogger(__name__)
 
 DATE, CODE = socrata.DATE, socrata.CODE
 KINDS = ("fut", "combo")
+DAILY_DAYS = 1100
 
 # category -> field stem; long/short fields are "{stem}_long" / "{stem}_short"
 # with an optional "_all" suffix (the API is not consistent about it).
@@ -48,9 +49,10 @@ CONC = {"g4L": "conc_gross_le_4_tdr_long", "g4S": "conc_gross_le_4_tdr_short",
 # --------------------------------------------------------------------------- fetch
 
 def _codes(report):
+    cftc = [m for m in config.MARKETS if m.source == "cftc"]
     if report == "legacy":
-        return sorted({m.code for m in config.MARKETS})
-    return sorted({m.code for m in config.MARKETS if m.report == report})
+        return sorted({m.code for m in cftc})
+    return sorted({m.code for m in cftc if m.report == report})
 
 
 def fetch(store, full=False):
@@ -89,6 +91,8 @@ def fetch(store, full=False):
 
     px, sources = prices.market_prices(config.MARKETS)
     px.to_csv(raw / "prices.csv.gz", compression="gzip", float_format="%.8g")
+    prices.spot_prices(config.SPOTS).to_csv(raw / "spots.csv.gz", compression="gzip", float_format="%.8g")
+    status["extra"] = extra.fetch_all(raw)
     status["prices"] = sources
     status["missing_prices"] = [m.key for m in config.MARKETS if not (sources.get(m.key) or {}).get("source")]
     status_path.write_text(json.dumps(status, indent=1))
@@ -96,6 +100,22 @@ def fetch(store, full=False):
 
 
 # --------------------------------------------------------------------------- build
+
+def _canon(col):
+    return re.sub(r"_+", "_", re.sub(r"_all$", "", col))
+
+
+def _harmonize(df, target):
+    """Give ICE fields the CFTC spelling of the same field. ICE files spell a
+    field differently across years (`_all` suffix, doubled underscores), so
+    variants of one field are merged into a single column."""
+    by_canon = {_canon(c): c for c in target}
+    out = {}
+    for c in df.columns:
+        name = by_canon.get(_canon(c), c)
+        out[name] = out[name].combine_first(df[c]) if name in out else df[c]
+    return pd.DataFrame(out)
+
 
 def _find(cols, pattern):
     rx = re.compile(rf"^{pattern}(_all)?$")
@@ -135,7 +155,8 @@ def _frame(df, code, idx):
     sub = df[df[CODE] == code]
     if sub.empty:
         return None
-    return sub.drop_duplicates(DATE, keep="last").set_index(DATE).reindex(idx)
+    sub = sub.drop_duplicates(DATE, keep="last").set_index(DATE).sort_index()
+    return sub.reindex(idx, method="nearest", tolerance=pd.Timedelta(days=3))
 
 
 def _side_arrays(frame, report, stems):
@@ -171,6 +192,11 @@ def build(store, out):
 
     dates = sorted(set().union(*(set(data[(r, "fut")][DATE]) for r in ("tff", "disagg", "legacy"))))
     idx = pd.DatetimeIndex([d for d in dates if d >= pd.Timestamp(socrata.START)])
+    for kind in KINDS:
+        ice = extra.load_ice(raw, kind)
+        if ice is not None and len(ice):
+            base = data[("disagg", kind)]
+            data[("disagg", kind)] = pd.concat([base, _harmonize(ice, base.columns)], ignore_index=True, sort=False)
     n = len(idx)
     px = pd.read_csv(raw / "prices.csv.gz", index_col=0, parse_dates=True)
 
@@ -278,17 +304,28 @@ def build(store, out):
         "datasets": {k: {"dataset": v["dataset"], "latest": v["latest"], "missing_codes": v["missing_codes"]}
                      for k, v in status.get("cftc", {}).items()},
         "missing_prices": status.get("missing_prices", []),
+        "extra": status.get("extra", {}),
     }
+
+    # daily contract prices (weekdays, ~4.4 years) for the CTA model and nowcast
+    wk = px[px.index.dayofweek < 5].iloc[-DAILY_DAYS:]
+    daily = {"dates": [str(d.date()) for d in wk.index],
+             "px": packed({k: wk[k].to_numpy(dtype="float64") for k in wk.columns})}
 
     site = out
     (site / "data" / "detail").mkdir(parents=True, exist_ok=True)
     dump = lambda obj, p: p.write_text(json.dumps(obj, separators=(",", ":"), allow_nan=False))
     dump(meta, site / "data" / "meta.json")
+    dump(daily, site / "data" / "daily.json")
     for kind in KINDS:
         dump(files[kind], site / "data" / f"{kind}.json")
     for key, d in detail.items():
         if d:
             dump(d, site / "data" / "detail" / f"{key}.json")
+    try:
+        log.info("extra outputs: %s", extra.build_outputs(raw, site / "data"))
+    except Exception as e:  # noqa: BLE001 - optional sources never block the build
+        log.exception("extra outputs failed: %s", e)
     web = Path(__file__).resolve().parent.parent / "web"
     for f in web.iterdir():
         if f.is_file() and f.name != "index.html":

@@ -237,6 +237,19 @@ dl.kv dd { margin: 0; }
 .leg-chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line-2); border-radius: 999px; padding: 2px 4px 2px 10px; font-size: 12.5px; background: var(--surface-2); }
 .leg-chip button { border: 0; background: none; cursor: pointer; color: var(--muted); font-size: 15px; line-height: 1; padding: 2px 6px; }
 .loading { padding: 60px 0; text-align: center; color: var(--ink-2); }
+/* ---------- conclusions */
+.concl { border-color: var(--line-2); }
+.concl .panel-body { display: flex; flex-direction: column; gap: 12px; }
+.concl-head { font-size: 17px; font-weight: 650; line-height: 1.45; margin: 0; max-width: 92ch; text-wrap: pretty; }
+.concl-pt { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+.concl-n { font-weight: 800; font-size: 19px; line-height: 1.1; color: var(--accent); font-stretch: 85%; }
+.concl-body h4 { margin: 0 0 4px; font-size: 14.5px; }
+.concl-body p { margin: 0; color: var(--ink-2); max-width: 95ch; }
+.concl-trade { margin-top: 8px; background: var(--surface-2); border-radius: 6px; padding: 8px 10px; font-size: 13px; max-width: 95ch; }
+.concl-sub { margin: 6px 0 0; font-size: 13.5px; }
+.concl-watch { margin: 4px 0 0; padding-left: 18px; color: var(--ink-2); }
+.concl-watch li { margin: 2px 0; }
+.concl-verify { margin: 4px 0 0; font-size: 12.5px; color: var(--ink-2); }
 @media (max-width: 640px) {
   .bar { position: static; }
   .controls { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
@@ -288,3 +301,4 @@ dl.kv dd { margin: 0; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.1/echarts.min.js"></script>
 <script src="app.js"></script>
+<script src="more.js"></script>

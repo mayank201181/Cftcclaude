@@ -31,6 +31,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      # main publishes to `data`; any other branch builds into `data-dev` so
+      # development runs never overwrite what the live dashboard reads.
+      DATA_BRANCH: ${{ github.ref_name == 'main' && 'data' || 'data-dev' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -39,29 +43,35 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m pytest -q tests
-      - name: Restore data store from the data branch
+      - name: Restore data store
         run: |
           mkdir -p datastore
-          if git fetch --depth=1 origin +refs/heads/data:refs/remotes/origin/data; then
-            git archive origin/data | tar -x -C datastore
-          else
-            echo "No data branch yet: full download"
-          fi
+          for b in "$DATA_BRANCH" data; do
+            if git fetch --depth=1 origin "+refs/heads/$b:refs/remotes/origin/$b"; then
+              git archive "origin/$b" | tar -x -C datastore
+              echo "Restored from $b"
+              break
+            fi
+          done
       - name: Fetch CFTC reports and prices
         run: python -m cftc fetch --store datastore ${{ inputs.full && '--full' || '' }}
       - name: Build dashboard
         run: python -m cftc build --store datastore
-      - name: Save data store to the data branch
+      - name: Probe candidate sources
+        if: github.ref_name != 'main'
+        continue-on-error: true
+        run: python -m cftc.probe datastore/probe
+      - name: Save data store
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd datastore
           rm -rf .git
-          git init -q -b data
+          git init -q -b "$DATA_BRANCH"
           git add -A
           git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -qm "Data $(date -u +%Y-%m-%dT%H:%MZ) (${GITHUB_REF_NAME}@${GITHUB_SHA::7})"
-          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data
+          git push -qf "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$DATA_BRANCH"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: datastore/site

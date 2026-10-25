@@ -137,3 +137,15 @@ def market_prices(markets):
         log.info("price %-8s %-6s %-10s last %s %.6g", m.key, best[0], best[1], sources[m.key]["last"],
                  best[2].iloc[-1])
     return pd.DataFrame(out).sort_index(), sources
+
+
+def spot_prices(spots):
+    """Daily spot FX closes for a {pair: yahoo_ticker} map."""
+    out = {}
+    for pair, ticker in spots.items():
+        s = _yahoo_chart(ticker)
+        if s is not None and len(s):
+            out[pair] = s
+        else:
+            log.warning("no spot for %s (%s)", pair, ticker)
+    return pd.DataFrame(out).sort_index()

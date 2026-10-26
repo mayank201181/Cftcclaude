@@ -643,7 +643,11 @@ function chartColors() {
   };
 }
 function mkChart(el, option, group) {
-  if (!window.echarts || !el) return null;
+  if (!el) return null;
+  if (!window.echarts) {
+    el.innerHTML = '<div class="banner">Chart unavailable: the chart library did not load. Reload the page; tables are unaffected.</div>';
+    return null;
+  }
   const c = echarts.init(el, null, { renderer: 'canvas' });
   const col = chartColors();
   option.animation = false;
@@ -690,7 +694,8 @@ function tipAxis(fmt) {
 function lineSeries(name, data, color, extra = {}) {
   return Object.assign({ name, type: 'line', data, showSymbol: false, symbol: 'none', connectNulls: false, lineStyle: { width: 2, color }, itemStyle: { color }, emphasis: { disabled: true } }, extra);
 }
-function legendCfg(col) { return { top: 0, left: 0, icon: 'roundRect', itemWidth: 14, itemHeight: 3, textStyle: { color: col.ink2, fontSize: 11.5 } }; }
+// one scrollable line, so a narrow screen never wraps the legend into the plot
+function legendCfg(col) { return { type: 'scroll', top: 0, left: 0, right: 0, icon: 'roundRect', itemWidth: 14, itemHeight: 3, textStyle: { color: col.ink2, fontSize: 11.5 }, pageIconSize: 10, pageIconColor: col.ink2, pageIconInactiveColor: col.line2, pageTextStyle: { color: col.muted, fontSize: 11 } }; }
 /* horizontal bars, values centred on a baseline (e.g. percentile - 50) */
 function barChart(el, rows, { value, label, fmt, color, axisFmt, height, min, max }) {
   const col = chartColors();
@@ -699,7 +704,7 @@ function barChart(el, rows, { value, label, fmt, color, axisFmt, height, min, ma
   const names = data.map(label);
   return mkChart(el, {
     grid: { left: 8, right: 54, top: 8, bottom: 22, containLabel: true },
-    xAxis: { type: 'value', min, max, interval: min === -50 ? 25 : undefined, axisLabel: { color: col.muted, fontSize: 11, formatter: axisFmt }, splitLine: { lineStyle: { color: col.grid } }, axisLine: { show: false } },
+    xAxis: { type: 'value', min, max, interval: min === -50 ? 25 : undefined, axisLabel: { color: col.muted, fontSize: 11, formatter: axisFmt, hideOverlap: true }, splitLine: { lineStyle: { color: col.grid } }, axisLine: { show: false } },
     yAxis: { type: 'category', data: names, inverse: true, axisTick: { show: false }, axisLine: { lineStyle: { color: col.axis } }, axisLabel: { color: col.ink2, fontSize: 11.5 } },
     tooltip: { trigger: 'item', formatter: (p) => `<b>${fmt(data[p.dataIndex])}</b><br>${esc(names[p.dataIndex])}` },
     series: [{
@@ -826,7 +831,7 @@ RENDER.overview = (sec) => {
     ${panel('Theme crowding', { note: 'Average signed percentile of each theme\'s legs. 100 = every leg at its most crowded in the theme\'s direction.', tools: '<button class="btn" data-go="themes">All themes</button>', body: '<div class="tablewrap" id="ov-themes"></div>', bodyClass: '' })}`;
   const live = rows.filter((r) => !r.na);
   table('ov-map', $('#ov-map'), [COL.mk, COL.asset, COL.usd, COL.flow, COL.pct, COL.spark, ...PCOLS, COL.z, COL.fz, COL.drv, COL.r4, COL.rsr],
-    rows, { sort: 'p' + S.lb, dir: -1, onRow: openMarket });
+    rows, { sort: 'p52', dir: -1, onRow: openMarket });
   const small = [COL.mk, Object.assign({}, COL['p' + S.lb], { g: null }), Object.assign({}, COL.usd, { g: null }), Object.assign({}, COL.r4, { g: null, h: 'Px 4w' })];
   table('ov-long', $('#ov-long'), small, live.filter((r) => fin(r.p)).sort((a, b) => b.p - a.p).slice(0, 10), { onRow: openMarket });
   table('ov-short', $('#ov-short'), small, live.filter((r) => fin(r.p)).sort((a, b) => a.p - b.p).slice(0, 10), { onRow: openMarket });
@@ -907,7 +912,7 @@ function renderAsset(sec, tab) {
   onSeg('as-range', (v) => { S.range = +v; save(); render(); });
   let foot = '';
   if (info.asset === 'FX' || info.asset === 'Rates' || info.asset === 'Equities') foot = assetFoot(info.asset, rows);
-  table('as-main', $('#as-main'), assetCols(info.asset), rows, { sort: 'p' + S.lb, dir: -1, onRow: openMarket, foot });
+  table('as-main', $('#as-main'), assetCols(info.asset), rows, { sort: 'p52', dir: -1, onRow: openMarket, foot });
   const byP = live.filter((r) => fin(r.p)).sort((a, b) => b.p - a.p);
   barChart($('#as-bars'), byP, {
     value: (r) => r.p - 50, label: (r) => r.m.name, fmt: (r) => fmtP(r.p), axisFmt: (v) => String(Math.round(v + 50)), min: -50, max: 50,
@@ -917,7 +922,7 @@ function renderAsset(sec, tab) {
   const byUsd = live.filter((r) => fin(valueOf(r))).sort((a, b) => valueOf(b) - valueOf(a));
   barChart($('#as-usd'), byUsd, {
     value: valueOf, label: (r) => r.m.name, fmt: (r) => (isRates ? fmtUSD(r.dv01) + '/bp' : fmtUSD(r.usd)),
-    axisFmt: (v) => fmtUSD(v), color: (r, v, col) => (v >= 0 ? col.pos : col.neg),
+    axisFmt: (v) => fmtUSD(v).replace(/\.0+(?=[a-z]|$)/, ''), color: (r, v, col) => (v >= 0 ? col.pos : col.neg),
   });
   historyChart($('#as-hist'), info.asset);
   matrixTable($('#as-matrix'), rows, info.asset === 'Commodities' ? 'disagg' : 'tff');
@@ -926,8 +931,17 @@ function assetFoot(asset, rows) {
   const live = rows.filter((r) => !r.na);
   const sum = (f) => live.reduce((s, r) => s + (fin(f(r)) ? f(r) : 0), 0);
   const cols = assetCols(asset);
+  // percentiles of the total itself (USD notional; DV01 for rates), over each window
+  const keys = live.filter((r) => !r.stale && !(asset === 'FX' && r.key === 'DXY')).map((r) => r.key);
+  const agg = aggSeries(keys, asset === 'FX' ? { sign: -1 } : asset === 'Rates' ? { mode: 'dv01' } : {});
+  const t = lastIdx(agg);
   const cells = cols.map((c) => {
     if (c.k === 'mk') return `<td class="mk">${asset === 'FX' ? 'USD vs these futures' : 'Total'}</td>`;
+    const w = LBS.find((x) => c.k === 'p' + x);
+    if (w !== undefined) {
+      const p = t >= 0 ? prank(agg, t, w) : NaN;
+      return `<td class="heat ${heatClass(p)}" title="Percentile of the total ${asset === 'Rates' ? 'DV01' : 'USD notional'} within the trailing ${LB_LONG[w]} window">${fmtP(p)}</td>`;
+    }
     if (asset === 'FX') {
       const fx = live.filter((r) => r.key !== 'DXY');
       if (c.k === 'usd') return `<td title="Minus the sum of currency futures notional: positive = long USD">${fmtUSD(-fx.reduce((s, r) => s + (fin(r.usd) ? r.usd : 0), 0))}</td>`;

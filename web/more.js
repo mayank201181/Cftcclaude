@@ -630,7 +630,7 @@ RENDER.sources = async (sec) => {
       ${f.twse ? panel('Taiwan: weekly foreign net buying of TWSE stocks', { note: 'USD at the week\'s USDTWD', body: '<div class="chart" id="src-tw"></div>' }) : panel('Taiwan', { body: '<div class="na">TWSE data not available in this build.</div>' })}
     </div>
     ${im ? panel('India: monthly FPI net investment', { note: 'USD at the month\'s USDINR (NSDL, calendar year to date)', body: '<div class="chart short" id="src-in"></div>' }) : ''}`;
-  if (ice.length) table('ice-main', $('#ice-main'), assetCols('Commodities'), ice, { sort: 'p' + S.lb, dir: -1, onRow: openMarket });
+  if (ice.length) table('ice-main', $('#ice-main'), assetCols('Commodities'), ice, { sort: 'p52', dir: -1, onRow: openMarket });
   const col = chartColors();
   const bars = (el, labels, series) => mkChart(el, {
     grid: { left: 8, right: 16, top: series.length > 1 ? 34 : 14, bottom: 24, containLabel: true }, legend: series.length > 1 ? legendCfg(col) : undefined,

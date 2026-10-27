@@ -66,6 +66,8 @@ GitHub Actions (weekly) ──> CFTC Socrata API  (TFF, Disaggregated, Legacy; f
   build wraps it into a standalone document), `app.js` (core analytics and tabs)
   and `more.js` (conclusions, nowcast and trend model, options, Europe & Asia,
   backtest).
+- `web/echarts.min.js` - ECharts 5.5.1 (Apache-2.0), served next to the page so the
+  charts do not depend on a CDN being reachable from the viewer.
 - `tools/digest.js` - loads the built site headlessly and writes the digest the
   weekly read is written from; `tools/CONCLUSIONS.md` - how to write it.
 - `.github/workflows/update.yml` - runs Fridays after the 15:30 ET release, with

@@ -120,3 +120,40 @@ def test_build_writes_consistent_files(store):
     assert fut["BRENTICE"]["L"]["mm"][-1] is not None
     assert set(fut["GOLD"]["L"]) == {"pm", "sd", "mm", "oth", "nr", "nc", "cm"}
     assert set(fut["BRENTICE"]["L"]) == {"pm", "sd", "mm", "oth", "nr"}
+
+
+def test_twice_weekly_reports_stay_on_a_weekly_grid(store):
+    """CFTC plans Monday and Wednesday positions from December 2026: one grid point per week."""
+    raw = store / "raw"
+    last = DATES[-1]                                   # a Tuesday
+    mon1, wed1 = last + pd.Timedelta(days=6), last + pd.Timedelta(days=8)
+    mon2, wed2 = last + pd.Timedelta(days=13), last + pd.Timedelta(days=15)
+    mon3 = last + pd.Timedelta(days=20)                # this week so far: Monday only
+    new = [mon1, wed1, mon2, wed2, mon3]
+    for (report, kind) in socrata.DATASETS:
+        p = raw / f"{report}_{kind}.csv.gz"
+        df = pd.read_csv(p, dtype={socrata.CODE: str}, parse_dates=[socrata.DATE])
+        tail = df[df[socrata.DATE] == last]
+        extra = []
+        for i, d in enumerate(new, start=1):
+            t = tail.copy()
+            t[socrata.DATE] = d
+            t["open_interest_all"] = 900_000 + i      # marks which release a grid point came from
+            extra.append(t)
+        pd.concat([df] + extra).to_csv(p, index=False, compression="gzip")
+    # ICE stays weekly on Tuesdays and has not reported this week yet
+    p = raw / "ice_cot.csv.gz"
+    ice = pd.read_csv(p, parse_dates=[socrata.DATE])
+    tail = ice[ice[socrata.DATE] == ice[socrata.DATE].max()]
+    adds = [tail.assign(**{socrata.DATE: d}) for d in (mon1 + pd.Timedelta(days=1), mon2 + pd.Timedelta(days=1))]
+    pd.concat([ice] + adds).to_csv(p, index=False, compression="gzip")
+
+    meta = build.build(store, store / "site")
+    assert meta["dates"][-4:] == [str(d.date()) for d in (last, wed1, wed2, mon3)]
+    assert len(meta["dates"]) == len(DATES) + 3
+    assert meta["schedule"]["kind"] == "twice-weekly" and meta["schedule"]["since"] == str(mon1.date())
+    assert meta["latest"] == str(mon3.date())
+    oi = json.loads((store / "site" / "data" / "fut.json").read_text())["EUR"]["oi"]
+    assert oi[-3:] == [900_002, 900_004, 900_005]    # Wednesday replaces Monday within a week
+    assert "BRENTICE" not in meta["stale_markets"]     # last week's Tuesday release, 5 days behind
+    assert "EUR" not in meta["stale_markets"]

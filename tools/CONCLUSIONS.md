@@ -16,12 +16,12 @@ futures only, 3-year percentiles unless stated:
 
 | Field | What it is |
 |---|---|
-| `report_date`, `prices_to` | positions date (Tuesday) and last daily close |
+| `report_date`, `prices_to`, `schedule` | positions date (Tuesday on the weekly schedule; Monday or Wednesday once `schedule.kind` is `twice-weekly`), last daily close, release schedule seen in the data |
 | `aggregates` | USD vs G10, US equities, UST DV01, commodity sectors: value, 1w and 4w change, percentile |
-| `spec`, `asset_managers`, `legacy_noncomm_fx` | per market: net, weekly change, USD notional and flow, % OI, percentiles (1Y/3Y/5Y/10Y/All), z, flow z, driver, price moves (`px_1w` is Tuesday to Tuesday, `px_since_tue` to the last close) |
+| `spec`, `asset_managers`, `legacy_noncomm_fx` | per market: net, weekly change, USD notional and flow, % OI, percentiles (1Y/3Y/5Y/10Y/All), z, flow z, driver, price moves (`px_1w` over the latest report week, `px_since_report` from the positions date to the last close) |
 | `themes` | score 0-100, 4w and 13w change, status, legs with their scores |
 | `signals` | the don't-miss list shown on the tab |
-| `nowcast` | estimated percentile now vs Tuesday, with R² |
+| `nowcast` | estimated percentile now (`pctl_now`) vs at the report (`pctl_report`), with R² |
 | `cta` | trend-model position (%), 1w change, flip price, distance in % and weekly σ |
 | `options` | options delta by market (futures-equivalents) and its percentile |
 | `backtest_now` | for markets beyond the 90th/10th percentile: 13w excess return after past episodes, reversal rate, t, episodes |
@@ -72,6 +72,10 @@ the market's chart.
   (basis and financing trades). High percentiles there mean "least short", not crowded.
 - Treat the nowcast as an estimate (quote its R²) and DTCC strikes as where open
   interest sits, not who is long.
+- History sits on a weekly grid (the latest report in each week). On the twice-weekly
+  schedule a Monday report starts a new week and Friday's (Wednesday positions)
+  replaces it, so "weekly change" means against the previous week's last report.
+  Say which positions date you are reading.
 - Mark every option price or risk/reward figure that is not from the data as an estimate.
 - Plain words, short sentences, units on every number. No hype, no filler, no
   "not X but Y" framing. Name what you are unsure of in the verify line.

@@ -76,8 +76,13 @@ GitHub Actions (weekly) ──> CFTC Socrata API  (TFF, Disaggregated, Legacy; f
 ## Hosting and refresh
 
 - The dashboard is published as a private claude.ai artifact. A scheduled Claude task
-  republishes it from the `data` branch on Tuesday and Saturday mornings (SGT) and,
-  for each new report, writes `data/conclusions.json` from the digest.
+  republishes it from the `data` branch on Tuesday, Thursday and Saturday mornings (SGT)
+  and, for each new report, writes `data/conclusions.json` from the digest.
+- Twice-weekly COT reports (planned by the CFTC from December 2026: Monday positions on
+  Wednesday, Wednesday positions on Friday) are detected from the data
+  (`meta.schedule`). History stays on a weekly grid, the latest report in each week,
+  so windows, z-scores and backtests remain comparable; the newest point moves with
+  each release.
 - The `data` branch is refreshed by the workflow's cron, which GitHub only runs from
   the default branch, so the workflow must be on `main`.
 - For an optional public copy on GitHub Pages, set Pages to "GitHub Actions" in the
@@ -96,7 +101,8 @@ the file directly.
 
 ## Caveats
 
-- Positions are as of Tuesday and published Friday.
+- Positions are as of Tuesday and published Friday (Monday/Wednesday positions,
+  published Wednesday/Friday, once the twice-weekly schedule starts).
 - Leveraged-fund shorts in Treasury futures mostly reflect the cash-futures basis
   trade; themes use asset managers for Treasury legs by default.
 - CME FX futures are a small share of FX turnover, and Asian FX coverage is limited

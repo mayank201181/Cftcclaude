@@ -327,7 +327,7 @@ function dontMiss() {
     if (fin(r.fz) && Math.abs(r.fz) >= 2.5) add('serious', 'Big weekly flow', r.key, `${name}: ${fmtUSD(r.flow, true)} (${r.driver ? r.driver.label.toLowerCase() : 'flow'}), ${fmtN(r.fz, 1, true)} standard deviations.`, Math.abs(r.fz) * 10);
     if (fin(r.rsr) && Math.abs(r.rsr) >= 0.03 && (p >= 85 || p <= 15)) {
       const against = (p >= 85 && r.pct > 0 && r.rsr < 0) || (p <= 15 && r.pct < 0 && r.rsr > 0);
-      if (against) add('serious', 'Hit since Tuesday', r.key, `${name} has moved ${fmtChg(r.rsr)} since the report date against positioning at the ${ord(p)} percentile.`, Math.abs(r.rsr) * 300);
+      if (against) add('serious', 'Hit since report', r.key, `${name} has moved ${fmtChg(r.rsr)} since the report date against positioning at the ${ord(p)} percentile.`, Math.abs(r.rsr) * 300);
     }
   }
   // everyone on the same side: fast money and real money both extreme
@@ -343,7 +343,7 @@ function dontMiss() {
   if (DAILY && DAILY.dates.length) {
     for (const r of rows) {
       const nc = nowcastFor(r.key, r.cl);
-      if (nc && nc.r2 >= 0.15 && fin(nc.dP) && Math.abs(nc.dP) >= 15) add('warning', 'Nowcast', r.key, `${r.m.name}: estimated percentile ${fmtP(nc.pRep)} → ${fmtP(nc.pNow)} since Tuesday (R² ${fmtN(nc.r2, 2)}).`, Math.abs(nc.dP));
+      if (nc && nc.r2 >= 0.15 && fin(nc.dP) && Math.abs(nc.dP) >= 15) add('warning', 'Nowcast', r.key, `${r.m.name}: estimated percentile ${fmtP(nc.pRep)} → ${fmtP(nc.pNow)} since the report (R² ${fmtN(nc.r2, 2)}).`, Math.abs(nc.dP));
       const c = ctaNow(r.key);
       if (c && fin(c.distSd) && Math.abs(c.distSd) <= 1 && Math.abs(c.pos) >= 0.25 && !AGG_SKIP.has(r.key)) add('warning', 'CTA flip near', r.key, `${r.m.name}: trend model ${fmtN(c.pos * 100, 0, true)}% flips at ${dispPx(r.m, c.flip)}, ${fmtN(c.distPct * 100, 1, true)}% (${fmtN(c.distSd, 1, true)}σ weekly) away.`, 30 - Math.abs(c.distSd) * 10);
     }
@@ -369,10 +369,10 @@ RENDER.conclusions = async (sec) => {
   const asofDaily = DAILY.dates.length ? DAILY.dates[DAILY.dates.length - 1] : null;
   sec.innerHTML = `
     <div class="sheet-head"><h2>Conclusions</h2><p>What matters in positions as of ${fmtDate(META.latest)}, with prices to ${asofDaily ? fmtDate(asofDaily) : 'the latest close'}. ${esc(roleLabel())}, ${kindLabel()}, ${lbLabel()}.</p></div>
-    ${c ? conclusionsHTML(c) : `<div class="banner">The written read for the ${fmtDate(META.latest, { day: 'numeric', month: 'short' })} report is produced after each CFTC release (Saturday morning SGT). The signals below update on their own.</div>`}
+    ${c ? conclusionsHTML(c) : `<div class="banner">The written read for the ${fmtDate(META.latest, { day: 'numeric', month: 'short' })} report is produced the morning after each CFTC release (Singapore time). The signals below update on their own.</div>`}
     ${panel("Don't-miss signals", { note: `${sig.length} flagged. Act = crowded and losing money; Watch closely = new extremes, big flows, theme unwinds.`, body: '<div class="tablewrap" id="cc-sig"></div>', bodyClass: '' })}
     <div class="grid2">
-      ${panel('Moves since Tuesday', { note: 'Largest estimated changes in positioning percentile (nowcast)', body: '<div class="tablewrap" id="cc-nc"></div>', bodyClass: '' })}
+      ${panel('Moves since the report', { note: 'Largest estimated changes in positioning percentile (nowcast)', body: '<div class="tablewrap" id="cc-nc"></div>', bodyClass: '' })}
       ${panel('Trend-follower flip watch', { note: 'Closest CTA flip levels, in weekly standard deviations', body: '<div class="tablewrap" id="cc-cta"></div>', bodyClass: '' })}
     </div>
     <div class="grid2">
@@ -389,9 +389,9 @@ RENDER.conclusions = async (sec) => {
   const ncs = rows.map((r) => Object.assign({ key: r.key, m: r.m }, nowcastFor(r.key, r.cl) || {})).filter((x) => fin(x.dP) && x.r2 >= 0.1);
   ncs.sort((a, b) => Math.abs(b.dP) - Math.abs(a.dP));
   table('cc-nc', $('#cc-nc'), [COL.mk,
-    { k: 'pRep', h: 'Tue', v: (r) => r.pRep, f: (r) => fmtP(r.pRep), c: (r) => 'heat ' + heatClass(r.pRep) },
+    { k: 'pRep', h: 'Report', v: (r) => r.pRep, f: (r) => fmtP(r.pRep), c: (r) => 'heat ' + heatClass(r.pRep) },
     { k: 'pNow', h: 'Now (est.)', v: (r) => r.pNow, f: (r) => fmtP(r.pNow), c: (r) => 'heat ' + heatClass(r.pNow) },
-    { k: 'rNow', h: 'Px since Tue', v: (r) => r.rNow, f: (r) => fmtChg(Math.expm1(r.rNow)) },
+    { k: 'rNow', h: 'Px since report', v: (r) => r.rNow, f: (r) => fmtChg(Math.expm1(r.rNow)) },
     { k: 'r2', h: 'R²', v: (r) => r.r2, f: (r) => fmtN(r.r2, 2) },
   ], ncs.slice(0, 10), { sort: null, onRow: openMarket });
   const ctas = rows.filter((r) => !AGG_SKIP.has(r.key)).map((r) => Object.assign({ key: r.key, m: r.m }, ctaNow(r.key) || {})).filter((c) => fin(c.distSd) && Math.abs(c.pos) >= 0.2);
@@ -448,9 +448,9 @@ RENDER.nowcast = async (sec) => {
   const ag = ctaAvg(['CORN', 'SOY', 'WHEAT', 'KCWHEAT', 'SOYMEAL', 'SOYOIL', 'SUGAR', 'COFFEE', 'COCOA', 'COTTON']);
   const tile = (label, a) => (a ? tileHTML({ label, value: `${fmtN(a.pos * 100, 0, true)}%`, sub: `1w ${fmtN(a.d5 * 100, 0, true)} pts · ${a.n} markets` }) : '');
   sec.innerHTML = `
-    <div class="sheet-head"><h2>Nowcast &amp; CTA</h2><p>The CFTC reports Tuesday positions on Friday. The nowcast estimates where ${esc(ROLES[S.role].short)} stand at the ${fmtDate(asof)} close from each market's own past response to price moves and to the trend model below (3 years of weekly data; R² shows how much to trust it). The trend model is a standard trend follower: 1, 3, 6 and 12-month momentum scaled by volatility, from −100% (max short) to +100% (max long).</p></div>
+    <div class="sheet-head"><h2>Nowcast &amp; CTA</h2><p>The CFTC publishes positions two to three days after their as-of date. The nowcast estimates where ${esc(ROLES[S.role].short)} stand at the ${fmtDate(asof)} close from each market's own past response to price moves and to the trend model below (3 years of weekly data; R² shows how much to trust it). The trend model is a standard trend follower: 1, 3, 6 and 12-month momentum scaled by volatility, from −100% (max short) to +100% (max long).</p></div>
     <div class="tiles">${tile('Trend model · USD vs G10', usd)}${tile('Trend model · equity indices', eq)}${tile('Trend model · duration', dur)}${tile('Trend model · energy', en)}${tile('Trend model · metals', mt)}${tile('Trend model · ags & softs', ag)}</div>
-    ${panel('Nowcast: positioning since Tuesday', { note: `${esc(roleLabel())}, ${LB_LABEL[S.lb]} percentiles. Fit: weekly change in % OI on the week's return and trend-model change, no intercept.`, tools: '<button class="btn" data-copy="nc-main">Copy</button>', body: '<div class="tablewrap" id="nc-main"></div>', bodyClass: '' })}
+    ${panel('Nowcast: positioning since the report', { note: `${esc(roleLabel())}, ${LB_LABEL[S.lb]} percentiles. Fit: weekly change in % OI on the week's return and trend-model change, no intercept.`, tools: '<button class="btn" data-copy="nc-main">Copy</button>', body: '<div class="tablewrap" id="nc-main"></div>', bodyClass: '' })}
     ${panel('Trend-follower model and flip levels', { note: 'Flip = price at which the aggregate model turns from long to short (or back) at the next close. Flows: change in model position over the next week if price moves −2σ to +2σ.', tools: '<button class="btn" data-copy="cta-main">Copy</button>', body: '<div class="tablewrap" id="cta-main"></div>', bodyClass: '' })}
     <div class="grid2">
       ${panel('Price and flip level', { note: '<span id="cta-name"></span>', tools: seg('cta-range', [[260, '1Y'], [520, '2Y'], [1100, 'All']], S.ctaRange || 260), body: '<div class="chart" id="cta-px"></div>' })}
@@ -459,14 +459,14 @@ RENDER.nowcast = async (sec) => {
   onSeg('cta-range', (v) => { S.ctaRange = +v; save(); render(); });
   const ncRows = rows.map((r) => Object.assign({ key: r.key, m: r.m, r }, nowcastFor(r.key, r.cl) || {}));
   table('nc-main', $('#nc-main'), [COL.mk,
-    { k: 'pct', h: '% OI Tue', g: 'Net % of OI', v: (x) => x.pct, f: (x) => fmtN(x.pct, 1, true) },
+    { k: 'pct', h: '% OI report', g: 'Net % of OI', v: (x) => x.pct, f: (x) => fmtN(x.pct, 1, true) },
     { k: 'est', h: 'Now (est.)', g: 'Net % of OI', v: (x) => x.est, f: (x) => fmtN(x.est, 1, true) },
     { k: 'se', h: '±1 s.e.', g: 'Net % of OI', v: (x) => x.se, f: (x) => fmtN(x.se, 1) },
-    { k: 'pRep', h: 'Tue', g: 'Percentile', v: (x) => x.pRep, f: (x) => fmtP(x.pRep), c: (x) => 'heat ' + heatClass(x.pRep) },
+    { k: 'pRep', h: 'Report', g: 'Percentile', v: (x) => x.pRep, f: (x) => fmtP(x.pRep), c: (x) => 'heat ' + heatClass(x.pRep) },
     { k: 'pNow', h: 'Now (est.)', g: 'Percentile', v: (x) => x.pNow, f: (x) => fmtP(x.pNow), c: (x) => 'heat ' + heatClass(x.pNow) },
     { k: 'dP', h: 'Change', g: 'Percentile', v: (x) => x.dP, f: (x) => fmtN(x.dP, 0, true) },
-    { k: 'rNow', h: 'Price', g: 'Since Tuesday', v: (x) => x.rNow, f: (x) => fmtChg(Math.expm1(x.rNow)) },
-    { k: 'cNow', h: 'Trend model', g: 'Since Tuesday', v: (x) => x.cNow, f: (x) => fmtN(x.cNow * 100, 0, true) + ' pts' },
+    { k: 'rNow', h: 'Price', g: 'Since report', v: (x) => x.rNow, f: (x) => fmtChg(Math.expm1(x.rNow)) },
+    { k: 'cNow', h: 'Trend model', g: 'Since report', v: (x) => x.cNow, f: (x) => fmtN(x.cNow * 100, 0, true) + ' pts' },
     { k: 'r2', h: 'R²', g: 'Fit', v: (x) => x.r2, f: (x) => fmtN(x.r2, 2) },
     { k: 'b1', h: 'pp per 1%', g: 'Fit', t: 'Change in net % OI for a 1% price move in the same week', v: (x) => x.b1, f: (x) => fmtN(x.b1 / 100, 2, true) },
   ], ncRows.filter((x) => fin(x.est)), { sort: 'dP', dir: -1, onRow: (k) => { S.ctaKey = k; save(); drawCta(k); } });
@@ -723,7 +723,7 @@ async function buildDigest() {
   S.kind = 'fut'; S.role = 'spec'; S.lb = 156;
   await ensureAll();
   const r2 = (v, d = 1) => (fin(v) ? +v.toFixed(d) : null);
-  const row = (r) => ({ key: r.key, name: r.m.name, asset: r.m.asset, net: r2(r.net, 0), d1: r2(r.d1, 0), usd_bn: r2(r.usd / 1e9, 2), flow_bn: r2(r.flow / 1e9, 2), pct_oi: r2(r.pct), P: Object.fromEntries(LBS.map((w) => [LB_LABEL[w], r2(r.P[w], 0)])), z: r2(r.z), flow_z: r2(r.fz), driver: r.driver && r.driver.label, px_1w: r2(r.r1 * 100), px_4w: r2(r.r4 * 100), px_since_tue: r2(r.rsr * 100) });
+  const row = (r) => ({ key: r.key, name: r.m.name, asset: r.m.asset, net: r2(r.net, 0), d1: r2(r.d1, 0), usd_bn: r2(r.usd / 1e9, 2), flow_bn: r2(r.flow / 1e9, 2), pct_oi: r2(r.pct), P: Object.fromEntries(LBS.map((w) => [LB_LABEL[w], r2(r.P[w], 0)])), z: r2(r.z), flow_z: r2(r.fz), driver: r.driver && r.driver.label, px_1w: r2(r.r1 * 100), px_4w: r2(r.r4 * 100), px_since_report: r2(r.rsr * 100) });
   const live = (role) => { S.role = role; return allMetrics().filter((r) => !r.na && !r.stale); };
   const spec = live('spec'), am = live('am'), nc = live('nc');
   S.role = 'spec';
@@ -733,7 +733,7 @@ async function buildDigest() {
   const w = washout();
   Object.assign(S, { corrSrc: S0.corrSrc, corrOrient: S0.corrOrient, corrLb: S0.corrLb, corrCrowded: S0.corrCrowded });
   return {
-    report_date: META.latest, prices_to: DAILY.dates[DAILY.dates.length - 1],
+    report_date: META.latest, schedule: META.schedule || { kind: 'weekly' }, prices_to: DAILY.dates[DAILY.dates.length - 1],
     aggregates: {
       usd_vs_g10_lf_bn: agg(G10, { sign: -1, role: 'spec' }), usd_vs_g10_nc_bn: agg(G10, { sign: -1, role: 'nc' }),
       us_equity_lf_bn: agg(USEQ, { role: 'spec' }), us_equity_am_bn: agg(USEQ, { role: 'am' }),
@@ -742,7 +742,7 @@ async function buildDigest() {
     },
     spec: spec.map(row), asset_managers: am.map(row), legacy_noncomm_fx: nc.filter((r) => r.m.asset === 'FX').map(row),
     themes, signals: dontMiss().slice(0, 40),
-    nowcast: spec.map((r) => Object.assign({ key: r.key }, nowcastFor(r.key, r.cl) || {})).filter((x) => fin(x.dP)).map((x) => ({ key: x.key, pctl_tue: r2(x.pRep, 0), pctl_now: r2(x.pNow, 0), r2: r2(x.r2, 2), px_since_tue: r2(Math.expm1(x.rNow) * 100) })),
+    nowcast: spec.map((r) => Object.assign({ key: r.key }, nowcastFor(r.key, r.cl) || {})).filter((x) => fin(x.dP)).map((x) => ({ key: x.key, pctl_report: r2(x.pRep, 0), pctl_now: r2(x.pNow, 0), r2: r2(x.r2, 2), px_since_report: r2(Math.expm1(x.rNow) * 100) })),
     cta: spec.map((r) => ctaNow(r.key)).filter(Boolean).map((c) => ({ key: c.key, pos: r2(c.pos * 100, 0), d1w: r2(c.d5 * 100, 0), flip: r2(c.flip, 6), dist_pct: r2(c.distPct * 100), dist_sd: r2(c.distSd) })),
     options: spec.map((r) => Object.assign({ key: r.key }, optFor(r.key, r.cl) || {})).filter((o) => fin(o.P) && o.share >= 10).map((o) => ({ key: o.key, delta: r2(o.od, 0), pctl: r2(o.P, 0), share: r2(o.share, 0) })),
     backtest_now: spec.filter((r) => r.p >= 90 || r.p <= 10).map((r) => { const b = btMarket(r.key, r.cl, 90, 10); const s = b && (r.p >= 90 ? b.L[2] : b.S[2]); return s ? { key: r.key, pctl: r2(r.p, 0), excess_13w_pct: r2(s.ex * 100), reversal_rate: r2(s.hit * 100, 0), t: r2(s.t), episodes: s.eps } : null; }).filter(Boolean),

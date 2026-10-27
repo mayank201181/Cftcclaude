@@ -270,7 +270,8 @@ function metrics(key, opt = {}) {
     }
   }
   return Object.assign(base, {
-    cl, t, date: META.dates[t], stale: META.dates[t] !== META.latest,
+    // a week or more behind (on the twice-weekly schedule, last week's release is at most 6 days old)
+    cl, t, date: META.dates[t], stale: (Date.parse(META.latest) - Date.parse(META.dates[t])) / 864e5 > 6,
     net, d1: net - g(s.net, 1), d4: net - g(s.net, 4), pct, dp1: pct - g(s.pct, 1), dp4: pct - g(s.pct, 4),
     P, p: P[S.lb], dP4: P[S.lb] - prank(s.pct, t - 4, S.lb),
     z: st && st.sd > 0 ? (pct - st.m) / st.sd : NaN,
@@ -609,7 +610,7 @@ const COL = {
   px: { k: 'px', h: 'Price', g: 'Market', t: 'Futures price on the report date (FX in market convention)', v: (r) => r.px, f: (r) => dispPx(r.m, r.px) },
   r1: { k: 'r1', h: 'Δ 1w', g: 'Market', t: 'Futures price change over the week (long-contract P&L)', v: (r) => r.r1, f: (r) => fmtChg(r.r1) },
   r4: { k: 'r4', h: 'Δ 4w', g: 'Market', t: 'Futures price change over 4 weeks (long-contract P&L)', v: (r) => r.r4, f: (r) => fmtChg(r.r4) },
-  rsr: { k: 'rsr', h: 'Since Tue', g: 'Market', t: 'Price change from the report date to the latest close: how the positions have fared since', v: (r) => r.rsr, f: (r) => fmtChg(r.rsr) },
+  rsr: { k: 'rsr', h: 'Since report', g: 'Market', t: 'Price change from the report date to the latest close: how the positions have fared since', v: (r) => r.rsr, f: (r) => fmtChg(r.rsr) },
   dv01: { k: 'dv01', h: 'DV01 /bp', g: 'Risk', t: 'Net DV01 in $ per basis point (approximate contract DV01s)', v: (r) => r.dv01, f: (r) => fmtUSD(r.dv01) },
   eq10: { k: 'eq10', h: '10Y eq.', g: 'Risk', t: 'Net position in 10Y-note equivalents (DV01-weighted)', v: (r) => r.eq10, f: (r) => fmtK(r.eq10) },
 };
@@ -725,11 +726,22 @@ function pctColor(p, col) {
 function disposeCharts() { while (charts.length) { try { charts.pop().dispose(); } catch (e) { /* already gone */ } } }
 
 /* ======================================================================= shell */
+/* Weekly schedule: Tuesday positions out on Friday. Twice-weekly: Monday positions on
+   Wednesday, Wednesday positions on Friday. */
+const twiceWeekly = () => !!(META.schedule && META.schedule.kind === 'twice-weekly');
+const weekday = (s) => new Date(s + 'T00:00:00Z').getUTCDay();
+function releaseOf(asof) { return addDays(asof, twiceWeekly() ? 2 : 3); }
+function nextAsOf(asof) {
+  if (!twiceWeekly()) return addDays(asof, 7);
+  const wd = weekday(asof);
+  return addDays(asof, wd === 1 ? 2 : (8 - wd) % 7 || 7);
+}
 function renderAsOf() {
   const lt = META.latest;
   const gen = new Date(META.generated);
-  const next = addDays(lt, 10);
-  $('#asof').innerHTML = `Positions as of <b>${fmtDate(lt)}</b> · published ${fmtDate(addDays(lt, 3), { weekday: 'short', day: 'numeric', month: 'short' })} · next report usually ${fmtDate(next, { weekday: 'short', day: 'numeric', month: 'short' })} · data refreshed ${gen.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}`;
+  const d = { weekday: 'short', day: 'numeric', month: 'short' };
+  const tw = twiceWeekly() ? ` · twice-weekly since ${fmtDate(META.schedule.since, { day: 'numeric', month: 'short' })}` : '';
+  $('#asof').innerHTML = `Positions as of <b>${fmtDate(lt)}</b> · published ${fmtDate(releaseOf(lt), d)} · next report usually ${fmtDate(releaseOf(nextAsOf(lt)), d)}${tw} · data refreshed ${gen.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}`;
 }
 function initControls() {
   const role = $('#ctl-role');
@@ -1275,7 +1287,7 @@ function statsHTML(m, r) {
     ${st('Z 3Y · flow z', `${fmtN(r.z, 1, true)} · ${fmtN(r.fz, 1, true)}`, r.driver ? r.driver.label : '')}
     ${st('Longs / shorts', `${fmtK(r.L)} / ${fmtK(r.S)}`, `traders ${fin(r.tL) ? r.tL + ' / ' + r.tS : '–'}`)}
     ${st('Open interest', fmtK(r.oi), `Δ1w ${fmtChg(r.doi)}`)}
-    ${st('Price', dispPx(m, r.px), `4w ${fmtChg(r.r4)} · since Tue ${fmtChg(r.rsr)}`)}
+    ${st('Price', dispPx(m, r.px), `4w ${fmtChg(r.r4)} · since report ${fmtChg(r.rsr)}`)}
     ${st('Top-4 long / short', fin(r.conc.g4L) ? `${r.conc.g4L.toFixed(0)}% / ${r.conc.g4S.toFixed(0)}%` : '–', fin(r.conc.g8L) ? `top-8 ${r.conc.g8L.toFixed(0)}% / ${r.conc.g8S.toFixed(0)}%` : '')}
   </div><div class="key" style="margin-top:10px">Percentiles: ${pcts}${r.stale ? ` · <b>last report ${fmtDate(r.date)}</b>` : ''}</div>`;
 }
@@ -1401,7 +1413,7 @@ RENDER.notes = (sec) => {
     <div class="grid2">
       <div class="panel"><div class="panel-body prose">
         <h4>Source and timing</h4>
-        <p>CFTC Commitments of Traders, pulled from the CFTC Public Reporting API (Socrata). Positions are as of Tuesday's close and published the following Friday at 15:30 ET (Saturday morning in Singapore); US holidays push publication back a day or so. A GitHub Action refreshes the data every Friday evening ET, with retries on Saturday and Monday.</p>
+        <p>CFTC Commitments of Traders, pulled from the CFTC Public Reporting API (Socrata). Positions are as of Tuesday's close and published the following Friday at 15:30 ET (Saturday morning in Singapore); US holidays push publication back a day or so. The CFTC plans to move to twice-weekly reports from December 2026: Monday positions on Wednesday and Wednesday positions on Friday, both at 15:30 ET. The dashboard detects the switch from the data. It keeps history on a weekly grid (the latest report in each week), so percentile windows, z-scores, weekly flows and backtests stay comparable across it, and the newest point moves forward with each release. A GitHub Action refreshes the data on Wednesday and Friday evenings ET, with retries on Thursday, Saturday and Monday.</p>
         <p>Other sources, refreshed by the same job: <b>ICE Futures Europe</b> Commitments of Traders (Brent, gasoil, Dubai, white sugar, London cocoa, robusta, feed wheat; same Tuesday basis and MiFID-style categories mapped onto the disaggregated groups); <b>DTCC</b> public dissemination of FX vanilla options (daily, US-reportable trades only, large tickets capped); <b>JPX</b> weekly investor-type trading in TSE Prime cash and in Nikkei, TOPIX and JGB futures (published the following week); <b>TWSE</b> weekly foreign-investor net buying; <b>NSDL</b> monthly and <b>NSE</b> daily foreign portfolio flows for India. Daily futures prices back the nowcast and the trend model.</p>
         <p><b>Futures only</b> counts futures contracts. <b>Futures + options</b> adds options converted to futures-equivalents using each option's delta, which matters for STIR, Treasuries, FX majors, gold and crude where options open interest is large.</p>
         <h4>Trader groups</h4>
@@ -1419,9 +1431,9 @@ RENDER.notes = (sec) => {
           <li><b>Net $</b>: net contracts × contract size × futures price on the report date. Rates are shown as 10Y-note-equivalent notional (DV01-weighted), so SOFR and 2Y contracts are comparable with the long end, equities and FX. <b>Flow</b>: change in net contracts × the same price, so price moves do not show up as flows.</li>
           <li><b>DV01</b> uses approximate contract DV01s (2Y $39, 5Y $46, 10Y $64, Ultra 10Y $91, Bond $128, Ultra $205, SOFR 3M $25, SOFR 1M and fed funds $41.67 per bp). <b>10Y eq.</b> scales by the 10Y DV01.</li>
           <li><b>Driver</b>: whichever of gross longs or shorts moved more this week (new longs, long liquidation, new shorts, short covering).</li>
-          <li><b>Since Tue</b>: futures price change from the report date to the latest close. The report is three days old when it comes out; this shows whether the crowd has been paid or hurt since.</li>
+          <li><b>Since report</b>: futures price change from the positions date to the latest close. The report is two or three days old when it comes out; this shows whether the crowd has been paid or hurt since.</li>
           <li><b>Trend model</b>: a generic trend follower. For 1, 3, 6 and 12-month lookbacks, tanh of the log return divided by EWMA daily volatility (λ 0.94) × √lookback; the position averages the four, from −100% to +100%. <b>Flip</b> is the next-day price at which the average crosses zero, found by bisection; distance is shown in % and in weekly standard deviations.</li>
-          <li><b>Nowcast</b>: for each market, a no-intercept regression over 156 weeks of the weekly change in net % OI on the week's log return and the change in the trend model. Applied to the moves since Tuesday it estimates today's % OI and percentile; R² says how far to trust it. CME daily open interest by trader group does not exist and CME blocks automated downloads of its daily volume and OI bulletin, so prices are the only daily input.</li>
+          <li><b>Nowcast</b>: for each market, a no-intercept regression over 156 weeks of the weekly change in net % OI on the week's log return and the change in the trend model. Applied to the moves since the positions date it estimates today's % OI and percentile; R² says how far to trust it. CME daily open interest by trader group does not exist and CME blocks automated downloads of its daily volume and OI bulletin, so prices are the only daily input.</li>
           <li><b>Option delta</b>: futures + options net minus futures-only net, per trader group, in futures-equivalents. Positive means the group is long calls and/or short puts on balance.</li>
           <li><b>Backtest</b>: every week a market's percentile (selected window) sits in the zone contributes its forward 4, 8 and 13-week futures return; consecutive weeks form one episode. Excess = the zone's average forward return minus the market's unconditional average, so a negative excess after crowded longs (or a positive one after crowded shorts) means the crowd lost. Reversal rate = share of weeks where price then moved against the crowd. t = excess / (s.d. / √episodes), deliberately conservative because overlapping weeks are not independent.</li>
         </ul>

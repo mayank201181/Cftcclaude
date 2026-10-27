@@ -8,6 +8,9 @@ on:
     - cron: "23 21 * * 5"
     - cron: "23 7 * * 6"
     - cron: "23 22 * * 1"
+    # twice-weekly reports (planned from December 2026): Monday positions out Wednesday 15:30 ET
+    - cron: "23 21 * * 3"
+    - cron: "23 7 * * 4"
   workflow_dispatch:
     inputs:
       full:

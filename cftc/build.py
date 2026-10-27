@@ -151,6 +151,28 @@ def asof(series, idx, tol_days=6):
     return out
 
 
+def weekly_grid(dates):
+    """One date per calendar week (Monday to Sunday): the latest as-of date in it.
+
+    Positions were weekly (Tuesdays) for the whole history. The CFTC's twice-weekly
+    schedule (Monday and Wednesday positions) would otherwise halve every window
+    counted in observations; on this grid 52 points stay a year and the newest point
+    moves forward with each release."""
+    s = pd.Series(pd.DatetimeIndex(sorted(set(dates))))
+    return pd.DatetimeIndex(s.groupby(s.dt.to_period("W-SUN")).max().sort_values().to_numpy())
+
+
+def schedule(dates):
+    """Release schedule seen in the data: twice-weekly from the first week with two as-of dates."""
+    s = pd.Series(pd.DatetimeIndex(sorted(set(dates))))
+    weeks = s.groupby(s.dt.to_period("W-SUN"))
+    multi = [v for _, v in weeks if len(v) > 1]
+    recent = [str(d.date()) for d in s.iloc[-6:]]
+    if not multi:
+        return {"kind": "weekly", "since": None, "recent": recent}
+    return {"kind": "twice-weekly", "since": str(multi[0].min().date()), "recent": recent}
+
+
 def _frame(df, code, idx):
     sub = df[df[CODE] == code]
     if sub.empty:
@@ -191,7 +213,10 @@ def build(store, out):
         data[(report, kind)] = pd.read_csv(p, dtype={CODE: str}, parse_dates=[DATE], low_memory=False)
 
     dates = sorted(set().union(*(set(data[(r, "fut")][DATE]) for r in ("tff", "disagg", "legacy"))))
-    idx = pd.DatetimeIndex([d for d in dates if d >= pd.Timestamp(socrata.START)])
+    dates = [d for d in dates if d >= pd.Timestamp(socrata.START)]
+    idx, sched = weekly_grid(dates), schedule(dates)
+    if sched["kind"] != "weekly":
+        log.info("CFTC schedule: %s since %s; recent as-of dates %s", sched["kind"], sched["since"], sched["recent"])
     for kind in KINDS:
         ice = extra.load_ice(raw, kind)
         if ice is not None and len(ice):
@@ -268,7 +293,10 @@ def build(store, out):
         files[kind] = recs
 
     latest = max(snap_dates.values()) if snap_dates else None
-    stale = sorted({k for (k, kind), d in snap_dates.items() if kind == "fut" and d != latest})
+    # a week without a report; under the twice-weekly schedule a contract still on
+    # last week's release (e.g. ICE, Tuesday positions) is at most 6 days behind
+    stale = sorted({k for (k, kind), d in snap_dates.items()
+                    if kind == "fut" and (pd.Timestamp(latest) - pd.Timestamp(d)).days > 6})
 
     markets = []
     for m in config.MARKETS:
@@ -294,6 +322,7 @@ def build(store, out):
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "fetched": status.get("fetched"),
         "latest": latest,
+        "schedule": sched,
         "stale_markets": stale,
         "dates": [str(d.date()) for d in idx],
         "categories": config.CATEGORIES,

@@ -1,0 +1,42 @@
+{
+ "fetched": "2026-10-31T00:53:19+00:00",
+ "ice": {
+  "rows": 8324,
+  "latest": "2026-10-27",
+  "markets": [
+   "ICE Brent Crude Futures",
+   "ICE Cocoa Futures",
+   "ICE Dubai 1st Line Futures",
+   "ICE Gasoil Futures",
+   "ICE Robusta Coffee Futures",
+   "ICE Wheat Futures",
+   "ICE White Sugar Futures"
+  ],
+  "seconds": 1.0
+ },
+ "fxopts": {
+  "rows": 79449,
+  "days_fetched": 2,
+  "days_known": 55,
+  "seconds": 3.8
+ },
+ "jpx": {
+  "eq_weeks": 147,
+  "dv_rows": 12320,
+  "links": 590,
+  "old_xls_links": 141,
+  "old_parsed": 0,
+  "old_failed": 0,
+  "seconds": 1.4
+ },
+ "twse": {
+  "weeks": 100,
+  "calls": 8,
+  "seconds": 21.3
+ },
+ "india": {
+  "months": 9,
+  "latest_day": "2026-10-30",
+  "seconds": 4.5
+ }
+}

@@ -1,0 +1,958 @@
+{
+ "fetched": "2026-10-31T00:52:45+00:00",
+ "cftc": {
+  "legacy_fut": {
+   "dataset": "6dca-aqww",
+   "rows": 56700,
+   "latest": "2026-10-27",
+   "missing_codes": [],
+   "codes": [
+    "001602",
+    "001612",
+    "002602",
+    "005602",
+    "007601",
+    "020601",
+    "020604",
+    "022651",
+    "023391",
+    "023651",
+    "026603",
+    "033661",
+    "040701",
+    "042601",
+    "043602",
+    "043607",
+    "044601",
+    "045601",
+    "054642",
+    "057642",
+    "061641",
+    "067411",
+    "067651",
+    "06765T",
+    "073732",
+    "075651",
+    "076651",
+    "080732",
+    "083731",
+    "084691",
+    "085692",
+    "088691",
+    "090741",
+    "092741",
+    "095741",
+    "096742",
+    "097741",
+    "098662",
+    "099741",
+    "102741",
+    "111659",
+    "112741",
+    "1170E1",
+    "122741",
+    "12460+",
+    "133741",
+    "133742",
+    "134741",
+    "134742",
+    "13874+",
+    "146021",
+    "146022",
+    "176740",
+    "177741",
+    "20974+",
+    "232741",
+    "239742",
+    "240741",
+    "240743",
+    "244041",
+    "244042",
+    "33874A"
+   ],
+   "columns": [
+    "market_and_exchange_names",
+    "report_date_as_yyyy_mm_dd",
+    "cftc_contract_market_code",
+    "open_interest_all",
+    "noncomm_positions_long_all",
+    "noncomm_positions_short_all",
+    "noncomm_postions_spread_all",
+    "comm_positions_long_all",
+    "comm_positions_short_all",
+    "tot_rept_positions_long_all",
+    "tot_rept_positions_short",
+    "nonrept_positions_long_all",
+    "nonrept_positions_short_all",
+    "noncomm_positions_spread",
+    "traders_tot_all",
+    "traders_noncomm_long_all",
+    "traders_noncomm_short_all",
+    "traders_noncomm_spread_all",
+    "traders_comm_long_all",
+    "traders_comm_short_all",
+    "traders_tot_rept_long_all",
+    "traders_tot_rept_short_all",
+    "conc_gross_le_4_tdr_long",
+    "conc_gross_le_4_tdr_short",
+    "conc_gross_le_8_tdr_long",
+    "conc_gross_le_8_tdr_short",
+    "conc_net_le_4_tdr_long_all",
+    "conc_net_le_4_tdr_short_all",
+    "conc_net_le_8_tdr_long_all",
+    "conc_net_le_8_tdr_short_all",
+    "contract_units"
+   ]
+  },
+  "legacy_combo": {
+   "dataset": "jun7-fc8e",
+   "rows": 56737,
+   "latest": "2026-10-27",
+   "missing_codes": [],
+   "codes": [
+    "001602",
+    "001612",
+    "002602",
+    "005602",
+    "007601",
+    "020601",
+    "020604",
+    "022651",
+    "023391",
+    "023651",
+    "026603",
+    "033661",
+    "040701",
+    "042601",
+    "043602",
+    "043607",
+    "044601",
+    "045601",
+    "054642",
+    "057642",
+    "061641",
+    "067411",
+    "067651",
+    "06765T",
+    "073732",
+    "075651",
+    "076651",
+    "080732",
+    "083731",
+    "084691",
+    "085692",
+    "088691",
+    "090741",
+    "092741",
+    "095741",
+    "096742",
+    "097741",
+    "098662",
+    "099741",
+    "102741",
+    "111659",
+    "112741",
+    "1170E1",
+    "122741",
+    "12460+",
+    "133741",
+    "133742",
+    "134741",
+    "134742",
+    "13874+",
+    "146021",
+    "146022",
+    "176740",
+    "177741",
+    "20974+",
+    "232741",
+    "239742",
+    "240741",
+    "240743",
+    "244041",
+    "244042",
+    "33874A"
+   ],
+   "columns": [
+    "market_and_exchange_names",
+    "report_date_as_yyyy_mm_dd",
+    "cftc_contract_market_code",
+    "open_interest_all",
+    "noncomm_positions_long_all",
+    "noncomm_positions_short_all",
+    "noncomm_postions_spread_all",
+    "comm_positions_long_all",
+    "comm_positions_short_all",
+    "tot_rept_positions_long_all",
+    "tot_rept_positions_short",
+    "nonrept_positions_long_all",
+    "nonrept_positions_short_all",
+    "noncomm_positions_spread",
+    "traders_tot_all",
+    "traders_noncomm_long_all",
+    "traders_noncomm_short_all",
+    "traders_noncomm_spread_all",
+    "traders_comm_long_all",
+    "traders_comm_short_all",
+    "traders_tot_rept_long_all",
+    "traders_tot_rept_short_all",
+    "conc_gross_le_4_tdr_long",
+    "conc_gross_le_4_tdr_short",
+    "conc_gross_le_8_tdr_long",
+    "conc_gross_le_8_tdr_short",
+    "conc_net_le_4_tdr_long_all",
+    "conc_net_le_4_tdr_short_all",
+    "conc_net_le_8_tdr_long_all",
+    "conc_net_le_8_tdr_short_all",
+    "contract_units"
+   ]
+  },
+  "disagg_fut": {
+   "dataset": "72hh-3qpy",
+   "rows": 27024,
+   "latest": "2026-10-27",
+   "missing_codes": [],
+   "codes": [
+    "001602",
+    "001612",
+    "002602",
+    "005602",
+    "007601",
+    "022651",
+    "023391",
+    "023651",
+    "026603",
+    "033661",
+    "040701",
+    "054642",
+    "057642",
+    "061641",
+    "067411",
+    "067651",
+    "06765T",
+    "073732",
+    "075651",
+    "076651",
+    "080732",
+    "083731",
+    "084691",
+    "085692",
+    "088691",
+    "111659"
+   ],
+   "columns": [
+    "market_and_exchange_names",
+    "report_date_as_yyyy_mm_dd",
+    "cftc_contract_market_code",
+    "open_interest_all",
+    "prod_merc_positions_long",
+    "prod_merc_positions_short",
+    "swap_positions_long_all",
+    "swap__positions_short_all",
+    "swap__positions_spread_all",
+    "m_money_positions_long_all",
+    "m_money_positions_short_all",
+    "m_money_positions_spread",
+    "other_rept_positions_long",
+    "other_rept_positions_short",
+    "other_rept_positions_spread",
+    "tot_rept_positions_long_all",
+    "tot_rept_positions_short",
+    "nonrept_positions_long_all",
+    "nonrept_positions_short_all",
+    "traders_tot_all",
+    "traders_prod_merc_long_all",
+    "traders_prod_merc_short_all",
+    "traders_swap_long_all",
+    "traders_swap_short_all",
+    "traders_swap_spread_all",
+    "traders_m_money_long_all",
+    "traders_m_money_short_all",
+    "traders_m_money_spread_all",
+    "traders_other_rept_long_all",
+    "traders_other_rept_short",
+    "traders_other_rept_spread",
+    "traders_tot_rept_long_all",
+    "traders_tot_rept_short_all",
+    "conc_gross_le_4_tdr_long",
+    "conc_gross_le_4_tdr_short",
+    "conc_gross_le_8_tdr_long",
+    "conc_gross_le_8_tdr_short",
+    "conc_net_le_4_tdr_long_all",
+    "conc_net_le_4_tdr_short_all",
+    "conc_net_le_8_tdr_long_all",
+    "conc_net_le_8_tdr_short_all",
+    "contract_units"
+   ]
+  },
+  "disagg_combo": {
+   "dataset": "kh3c-gbw2",
+   "rows": 27061,
+   "latest": "2026-10-27",
+   "missing_codes": [],
+   "codes": [
+    "001602",
+    "001612",
+    "002602",
+    "005602",
+    "007601",
+    "022651",
+    "023391",
+    "023651",
+    "026603",
+    "033661",
+    "040701",
+    "054642",
+    "057642",
+    "061641",
+    "067411",
+    "067651",
+    "06765T",
+    "073732",
+    "075651",
+    "076651",
+    "080732",
+    "083731",
+    "084691",
+    "085692",
+    "088691",
+    "111659"
+   ],
+   "columns": [
+    "market_and_exchange_names",
+    "report_date_as_yyyy_mm_dd",
+    "cftc_contract_market_code",
+    "open_interest_all",
+    "prod_merc_positions_long",
+    "prod_merc_positions_short",
+    "swap_positions_long_all",
+    "swap__positions_short_all",
+    "swap__positions_spread_all",
+    "m_money_positions_long_all",
+    "m_money_positions_short_all",
+    "m_money_positions_spread",
+    "other_rept_positions_long",
+    "other_rept_positions_short",
+    "other_rept_positions_spread",
+    "tot_rept_positions_long_all",
+    "tot_rept_positions_short",
+    "nonrept_positions_long_all",
+    "nonrept_positions_short_all",
+    "traders_tot_all",
+    "traders_prod_merc_long_all",
+    "traders_prod_merc_short_all",
+    "traders_swap_long_all",
+    "traders_swap_short_all",
+    "traders_swap_spread_all",
+    "traders_m_money_long_all",
+    "traders_m_money_short_all",
+    "traders_m_money_spread_all",
+    "traders_other_rept_long_all",
+    "traders_other_rept_short",
+    "traders_other_rept_spread",
+    "traders_tot_rept_long_all",
+    "traders_tot_rept_short_all",
+    "conc_gross_le_4_tdr_long",
+    "conc_gross_le_4_tdr_short",
+    "conc_gross_le_8_tdr_long",
+    "conc_gross_le_8_tdr_short",
+    "conc_net_le_4_tdr_long_all",
+    "conc_net_le_4_tdr_short_all",
+    "conc_net_le_8_tdr_long_all",
+    "conc_net_le_8_tdr_short_all",
+    "contract_units"
+   ]
+  },
+  "tff_fut": {
+   "dataset": "gpe5-46if",
+   "rows": 28718,
+   "latest": "2026-10-27",
+   "missing_codes": [],
+   "codes": [
+    "020601",
+    "020604",
+    "042601",
+    "043602",
+    "043607",
+    "044601",
+    "045601",
+    "090741",
+    "092741",
+    "095741",
+    "096742",
+    "097741",
+    "098662",
+    "099741",
+    "102741",
+    "112741",
+    "1170E1",
+    "122741",
+    "12460+",
+    "133741",
+    "133742",
+    "134741",
+    "134742",
+    "13874+",
+    "146021",
+    "146022",
+    "176740",
+    "177741",
+    "20974+",
+    "232741",
+    "239742",
+    "240741",
+    "240743",
+    "244041",
+    "244042",
+    "33874A"
+   ],
+   "columns": [
+    "market_and_exchange_names",
+    "report_date_as_yyyy_mm_dd",
+    "cftc_contract_market_code",
+    "open_interest_all",
+    "dealer_positions_long_all",
+    "dealer_positions_short_all",
+    "dealer_positions_spread_all",
+    "asset_mgr_positions_long",
+    "asset_mgr_positions_short",
+    "asset_mgr_positions_spread",
+    "lev_money_positions_long",
+    "lev_money_positions_short",
+    "lev_money_positions_spread",
+    "other_rept_positions_long",
+    "other_rept_positions_short",
+    "other_rept_positions_spread",
+    "tot_rept_positions_long_all",
+    "tot_rept_positions_short",
+    "nonrept_positions_long_all",
+    "nonrept_positions_short_all",
+    "traders_tot_all",
+    "traders_dealer_long_all",
+    "traders_dealer_short_all",
+    "traders_dealer_spread_all",
+    "traders_asset_mgr_long_all",
+    "traders_asset_mgr_short_all",
+    "traders_asset_mgr_spread",
+    "traders_lev_money_long_all",
+    "traders_lev_money_short_all",
+    "traders_lev_money_spread",
+    "traders_other_rept_long_all",
+    "traders_other_rept_short",
+    "traders_other_rept_spread",
+    "traders_tot_rept_long_all",
+    "traders_tot_rept_short_all",
+    "conc_gross_le_4_tdr_long",
+    "conc_gross_le_4_tdr_short",
+    "conc_gross_le_8_tdr_long",
+    "conc_gross_le_8_tdr_short",
+    "conc_net_le_4_tdr_long_all",
+    "conc_net_le_4_tdr_short_all",
+    "conc_net_le_8_tdr_long_all",
+    "conc_net_le_8_tdr_short_all",
+    "contract_units"
+   ]
+  },
+  "tff_combo": {
+   "dataset": "yw9f-hn96",
+   "rows": 28718,
+   "latest": "2026-10-27",
+   "missing_codes": [],
+   "codes": [
+    "020601",
+    "020604",
+    "042601",
+    "043602",
+    "043607",
+    "044601",
+    "045601",
+    "090741",
+    "092741",
+    "095741",
+    "096742",
+    "097741",
+    "098662",
+    "099741",
+    "102741",
+    "112741",
+    "1170E1",
+    "122741",
+    "12460+",
+    "133741",
+    "133742",
+    "134741",
+    "134742",
+    "13874+",
+    "146021",
+    "146022",
+    "176740",
+    "177741",
+    "20974+",
+    "232741",
+    "239742",
+    "240741",
+    "240743",
+    "244041",
+    "244042",
+    "33874A"
+   ],
+   "columns": [
+    "market_and_exchange_names",
+    "report_date_as_yyyy_mm_dd",
+    "cftc_contract_market_code",
+    "open_interest_all",
+    "dealer_positions_long_all",
+    "dealer_positions_short_all",
+    "dealer_positions_spread_all",
+    "asset_mgr_positions_long",
+    "asset_mgr_positions_short",
+    "asset_mgr_positions_spread",
+    "lev_money_positions_long",
+    "lev_money_positions_short",
+    "lev_money_positions_spread",
+    "other_rept_positions_long",
+    "other_rept_positions_short",
+    "other_rept_positions_spread",
+    "tot_rept_positions_long_all",
+    "tot_rept_positions_short",
+    "nonrept_positions_long_all",
+    "nonrept_positions_short_all",
+    "traders_tot_all",
+    "traders_dealer_long_all",
+    "traders_dealer_short_all",
+    "traders_dealer_spread_all",
+    "traders_asset_mgr_long_all",
+    "traders_asset_mgr_short_all",
+    "traders_asset_mgr_spread",
+    "traders_lev_money_long_all",
+    "traders_lev_money_short_all",
+    "traders_lev_money_spread",
+    "traders_other_rept_long_all",
+    "traders_other_rept_short",
+    "traders_other_rept_spread",
+    "traders_tot_rept_long_all",
+    "traders_tot_rept_short_all",
+    "conc_gross_le_4_tdr_long",
+    "conc_gross_le_4_tdr_short",
+    "conc_gross_le_8_tdr_long",
+    "conc_gross_le_8_tdr_short",
+    "conc_net_le_4_tdr_long_all",
+    "conc_net_le_4_tdr_short_all",
+    "conc_net_le_8_tdr_long_all",
+    "conc_net_le_8_tdr_short_all",
+    "contract_units"
+   ]
+  }
+ },
+ "extra": {
+  "fetched": "2026-10-31T00:53:19+00:00",
+  "ice": {
+   "rows": 8324,
+   "latest": "2026-10-27",
+   "markets": [
+    "ICE Brent Crude Futures",
+    "ICE Cocoa Futures",
+    "ICE Dubai 1st Line Futures",
+    "ICE Gasoil Futures",
+    "ICE Robusta Coffee Futures",
+    "ICE Wheat Futures",
+    "ICE White Sugar Futures"
+   ],
+   "seconds": 1.0
+  },
+  "fxopts": {
+   "rows": 79449,
+   "days_fetched": 2,
+   "days_known": 55,
+   "seconds": 3.8
+  },
+  "jpx": {
+   "eq_weeks": 147,
+   "dv_rows": 12320,
+   "links": 590,
+   "old_xls_links": 141,
+   "old_parsed": 0,
+   "old_failed": 0,
+   "seconds": 1.4
+  },
+  "twse": {
+   "weeks": 100,
+   "calls": 8,
+   "seconds": 21.3
+  },
+  "india": {
+   "months": 9,
+   "latest_day": "2026-10-30",
+   "seconds": 4.5
+  }
+ },
+ "prices": {
+  "EUR": {
+   "source": "yahoo",
+   "ticker": "6E=F",
+   "last": "2026-10-30"
+  },
+  "JPY": {
+   "source": "yahoo",
+   "ticker": "6J=F",
+   "last": "2026-10-30"
+  },
+  "GBP": {
+   "source": "yahoo",
+   "ticker": "6B=F",
+   "last": "2026-10-30"
+  },
+  "CHF": {
+   "source": "yahoo",
+   "ticker": "6S=F",
+   "last": "2026-10-30"
+  },
+  "CAD": {
+   "source": "yahoo",
+   "ticker": "6C=F",
+   "last": "2026-10-30"
+  },
+  "AUD": {
+   "source": "yahoo",
+   "ticker": "6A=F",
+   "last": "2026-10-30"
+  },
+  "NZD": {
+   "source": "yahoo",
+   "ticker": "6N=F",
+   "last": "2026-10-30"
+  },
+  "MXN": {
+   "source": "yahoo",
+   "ticker": "6M=F",
+   "last": "2026-10-30"
+  },
+  "BRL": {
+   "source": "yahoo",
+   "ticker": "6L=F",
+   "last": "2026-10-30"
+  },
+  "ZAR": {
+   "source": "yahoo",
+   "ticker": "ZAR=X",
+   "last": "2026-10-30"
+  },
+  "DXY": {
+   "source": "yahoo",
+   "ticker": "DX-Y.NYB",
+   "last": "2026-10-30"
+  },
+  "BTC": {
+   "source": "yahoo",
+   "ticker": "BTC-USD",
+   "last": "2026-10-31"
+  },
+  "MBT": {
+   "source": "yahoo",
+   "ticker": "BTC-USD",
+   "last": "2026-10-31"
+  },
+  "ETH": {
+   "source": "yahoo",
+   "ticker": "ETH-USD",
+   "last": "2026-10-31"
+  },
+  "MET": {
+   "source": "yahoo",
+   "ticker": "ETH-USD",
+   "last": "2026-10-31"
+  },
+  "SOL": {
+   "source": "yahoo",
+   "ticker": "SOL-USD",
+   "last": "2026-10-31"
+  },
+  "XRP": {
+   "source": "yahoo",
+   "ticker": "XRP-USD",
+   "last": "2026-10-31"
+  },
+  "UST2": {
+   "source": "yahoo",
+   "ticker": "ZT=F",
+   "last": "2026-10-30"
+  },
+  "UST5": {
+   "source": "yahoo",
+   "ticker": "ZF=F",
+   "last": "2026-10-30"
+  },
+  "UST10": {
+   "source": "yahoo",
+   "ticker": "ZN=F",
+   "last": "2026-10-30"
+  },
+  "ULTRA10": {
+   "source": "yahoo",
+   "ticker": "TN=F",
+   "last": "2026-10-30"
+  },
+  "BOND": {
+   "source": "yahoo",
+   "ticker": "ZB=F",
+   "last": "2026-10-30"
+  },
+  "ULTRA": {
+   "source": "yahoo",
+   "ticker": "UB=F",
+   "last": "2026-10-30"
+  },
+  "SOFR3": {
+   "source": "yahoo",
+   "ticker": "^IRX",
+   "last": "2026-10-30",
+   "tried": [
+    "yahoo:SR3=F=1 obs to 2026-10-30",
+    "yahoo:^IRX=5258 obs to 2026-10-30"
+   ]
+  },
+  "SOFR1": {
+   "source": "yahoo",
+   "ticker": "^IRX",
+   "last": "2026-10-30",
+   "tried": [
+    "yahoo:SR1=F=1 obs to 2026-10-30",
+    "yahoo:^IRX=5258 obs to 2026-10-30"
+   ]
+  },
+  "FF": {
+   "source": "yahoo",
+   "ticker": "ZQ=F",
+   "last": "2026-10-30"
+  },
+  "SPX": {
+   "source": "yahoo",
+   "ticker": "ES=F",
+   "last": "2026-10-30"
+  },
+  "NDX": {
+   "source": "yahoo",
+   "ticker": "NQ=F",
+   "last": "2026-10-30"
+  },
+  "DJIA": {
+   "source": "yahoo",
+   "ticker": "YM=F",
+   "last": "2026-10-30"
+  },
+  "RTY": {
+   "source": "yahoo",
+   "ticker": "RTY=F",
+   "last": "2026-10-30"
+  },
+  "MID": {
+   "source": "yahoo",
+   "ticker": "^MID",
+   "last": "2026-10-30",
+   "tried": [
+    "yahoo:EMD=F=1 obs to 2026-10-30",
+    "yahoo:^MID=5261 obs to 2026-10-30"
+   ]
+  },
+  "NKY": {
+   "source": "yahoo",
+   "ticker": "NKD=F",
+   "last": "2026-10-30"
+  },
+  "NKYJ": {
+   "source": "yahoo",
+   "ticker": "NIY=F",
+   "last": "2026-10-30"
+  },
+  "MSEM": {
+   "source": "yahoo",
+   "ticker": "EEM",
+   "last": "2026-10-29",
+   "tried": [
+    "yahoo:MME=F=none",
+    "yahoo:EEM=5260 obs to 2026-10-29"
+   ]
+  },
+  "MSEAFE": {
+   "source": "yahoo",
+   "ticker": "EFA",
+   "last": "2026-10-29",
+   "tried": [
+    "yahoo:MFS=F=none",
+    "yahoo:EFA=5260 obs to 2026-10-29"
+   ]
+  },
+  "VIX": {
+   "source": "yahoo",
+   "ticker": "^VIX",
+   "last": "2026-10-30"
+  },
+  "WTI": {
+   "source": "yahoo",
+   "ticker": "CL=F",
+   "last": "2026-10-30"
+  },
+  "WTIICE": {
+   "source": "yahoo",
+   "ticker": "CL=F",
+   "last": "2026-10-30"
+  },
+  "BRENT": {
+   "source": "yahoo",
+   "ticker": "BZ=F",
+   "last": "2026-10-30"
+  },
+  "NATGAS": {
+   "source": "yahoo",
+   "ticker": "NG=F",
+   "last": "2026-10-30"
+  },
+  "NGICE": {
+   "source": "yahoo",
+   "ticker": "NG=F",
+   "last": "2026-10-30"
+  },
+  "RBOB": {
+   "source": "yahoo",
+   "ticker": "RB=F",
+   "last": "2026-10-30"
+  },
+  "ULSD": {
+   "source": "yahoo",
+   "ticker": "HO=F",
+   "last": "2026-10-30"
+  },
+  "BRENTICE": {
+   "source": "yahoo",
+   "ticker": "BZ=F",
+   "last": "2026-10-30"
+  },
+  "GASOIL": {
+   "source": "yahoo",
+   "ticker": "HO=F",
+   "last": "2026-10-30"
+  },
+  "DUBAI": {
+   "source": "yahoo",
+   "ticker": "BZ=F",
+   "last": "2026-10-30"
+  },
+  "GOLD": {
+   "source": "yahoo",
+   "ticker": "GC=F",
+   "last": "2026-10-30"
+  },
+  "SILVER": {
+   "source": "yahoo",
+   "ticker": "SI=F",
+   "last": "2026-10-30"
+  },
+  "COPPER": {
+   "source": "yahoo",
+   "ticker": "HG=F",
+   "last": "2026-10-30"
+  },
+  "PLAT": {
+   "source": "yahoo",
+   "ticker": "PL=F",
+   "last": "2026-10-30"
+  },
+  "PALL": {
+   "source": "yahoo",
+   "ticker": "PA=F",
+   "last": "2026-10-30"
+  },
+  "CORN": {
+   "source": "yahoo",
+   "ticker": "ZC=F",
+   "last": "2026-10-30"
+  },
+  "SOY": {
+   "source": "yahoo",
+   "ticker": "ZS=F",
+   "last": "2026-10-30"
+  },
+  "WHEAT": {
+   "source": "yahoo",
+   "ticker": "ZW=F",
+   "last": "2026-10-30"
+  },
+  "KCWHEAT": {
+   "source": "yahoo",
+   "ticker": "KE=F",
+   "last": "2026-10-30"
+  },
+  "SOYMEAL": {
+   "source": "yahoo",
+   "ticker": "ZM=F",
+   "last": "2026-10-30"
+  },
+  "SOYOIL": {
+   "source": "yahoo",
+   "ticker": "ZL=F",
+   "last": "2026-10-30"
+  },
+  "SUGAR": {
+   "source": "yahoo",
+   "ticker": "SB=F",
+   "last": "2026-10-30"
+  },
+  "COFFEE": {
+   "source": "yahoo",
+   "ticker": "KC=F",
+   "last": "2026-10-30"
+  },
+  "COCOA": {
+   "source": "yahoo",
+   "ticker": "CC=F",
+   "last": "2026-10-30"
+  },
+  "COTTON": {
+   "source": "yahoo",
+   "ticker": "CT=F",
+   "last": "2026-10-30"
+  },
+  "OJ": {
+   "source": "yahoo",
+   "ticker": "OJ=F",
+   "last": "2026-10-30"
+  },
+  "WSUGAR": {
+   "source": "yahoo",
+   "ticker": "SB=F",
+   "last": "2026-10-30"
+  },
+  "LCOCOA": {
+   "source": "yahoo",
+   "ticker": "CC=F",
+   "last": "2026-10-30"
+  },
+  "ROBUSTA": {
+   "source": null,
+   "tried": []
+  },
+  "FEEDWHEAT": {
+   "source": null,
+   "tried": []
+  },
+  "LCATTLE": {
+   "source": "yahoo",
+   "ticker": "LE=F",
+   "last": "2026-10-30"
+  },
+  "FCATTLE": {
+   "source": "yahoo",
+   "ticker": "GF=F",
+   "last": "2026-10-30"
+  },
+  "HOGS": {
+   "source": "yahoo",
+   "ticker": "HE=F",
+   "last": "2026-10-30"
+  }
+ },
+ "missing_prices": [
+  "ROBUSTA",
+  "FEEDWHEAT"
+ ]
+}

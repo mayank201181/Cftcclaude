@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="copyright" content="(C) Japan Exchange Group, Inc.">
+
+<meta name="description" content="Trading by Type of Investors | This is the website of Japan Exchange Group (JPX), which operates Tokyo Stock Exchange, Osaka Exchange, and Tokyo Commodity Exchange.">
+  
+<meta property="og:title" content="Trading by Type of Investors | Japan Exchange Group">
+  
+<meta property="og:type" content="article">
+
+<meta property="og:description" content="Trading by Type of Investors | This is the website of Japan Exchange Group (JPX), which operates Tokyo Stock Exchange, Osaka Exchange, and Tokyo Commodity Exchange.">
+  
+<meta property="og:image" content="https://www.jpx.co.jp/english/common/images/other/b5b4pj000000f2gn-img/ogp.png">
+  
+<meta property="og:site_name" content="Japan Exchange Group">
+<meta property="og:url" content="https://www.jpx.co.jp/english/markets/statistics-equities/investor-type/00-00-archives-01.html">
+<meta property="og:locale" content="en_US">
+<meta property="fb:app_id" content="493523696109663">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:site" content="@JPX_official_EN">
+<link href="/english/_assets/img/icon/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link rel="apple-touch-icon" href="/english/_assets/img/image/jpx_icon_180x180.png" />
+<link rel="icon" type="image/png" href="/english/_assets/img/image/jpx_icon_192x192.png">
+
+<title>Weekly | Equities | Trading by Type of Investors | Japan Exchange Group</title>
+  
+
+<script type="text/javascript" src="/english/_assets/js/jquery.min.js"></script>
+<link href="/english/_assets/css/reset.css" rel="stylesheet" type="text/css">
+<link href="/english/_assets/css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="/english/_assets/css/parts.css" rel="stylesheet" type="text/css">
+<link href="/english/_assets/css/print.css" rel="stylesheet" type="text/css" media="print">
+<link href="/english/_assets/css/style_add.css" rel="stylesheet" type="text/css">
+<link href="/english/_assets/css/probo.css" rel="stylesheet" type="text/css">
+<link href="/english/_assets/css/probo_add.css" rel="stylesheet" type="text/css">
+
+<link href="/english/_assets/css/list_add.css" rel="stylesheet" type="text/css">
+<link href="/english/_assets/css2/lity.css" rel="stylesheet" type="text/css">
+
+      <link href="/english/_assets/css2/prettyPhoto-parts.css" rel="stylesheet" type="text/css">
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+<script type="text/javascript" src="/english/public/javascripts/backnumber.js"></script>
+</head>
+<body class="">
+  
+  <!-- body_prepend -->
+  <!-- Google Tag Manager -->
+  <link rel="stylesheet" type="text/css" href="/english/_assets/css/cookieconsent_customize.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script src="/english/_assets/js2/cookie-accept.js"></script>
+  <noscript>
+  <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MS2WRF" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script>
+function startGtm() {
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MS2WRF');
+}
+</script> 
+  <!-- End Google Tag Manager -->
+
+  <!-- wrapper-area -->
+  <div id="wrapper-area">
+
+    <!-- ヘッダー出力 -->
+<header class="JPX-header">
+  <div class="JPX-header-label">
+    <div class="JPX-header-label-main">
+      <ul>
+        <li>Tokyo Stock Exchange</li>
+        <li>Osaka Exchange</li>
+        <li>Tokyo Commodity Exchange</li>
+        <li>JPX Market Innovation & Research</li>
+        <li>Japan Exchange Regulation</li>
+        <li><a href="https://www.jpx.co.jp/jscc/en/" rel="external">Japan Securities Clearing Corporation</a></li>
+      </ul>
+    </div>
+    <div class="JPX-header-label-link">
+      <a href="/english/corporate/index.html">About JPX</a>
+    </div>
+  </div>
+  
+  <div class="JPX-header-main-wrapper">
+    <div class="JPX-header-main">
+      <div class="JPX-header-mainInner">
+        <div class="JPX-header-logo">
+          <a href="/english/index.html">
+            <picture>
+              <source srcset="/english/_assets/img/image/logo_pc.svg" media="(min-width: 1081px)">
+              <img src="/english/_assets/img/image/logo_sp.svg" alt="Japan Exchange Group">
+            </picture>
+          </a>
+        </div>
+        <div class="JPX-header-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+      </div>
+
+      <div class="JPX-header-menu">
+
+        <!-- 検索窓 -->
+        <div class="JPX-header-menu-search">
+          <div class="JPX-header-menu-searchInner">
+            <form action="/english/search.html">
+              <input type="text" id="q2" class="search-input" name="q" value="" placeholder="Search" />
+              <div class="search-input-btn">
+                <input type="image" src="/english/_assets/img/svg/icn-search.svg" name="" value="" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /検索窓 -->
+
+        <!-- PCメニュー全ページ共通（PC） -->
+        
+<a id="global_menu_pc_following_logo_hidden" style="display:none;" href="/english/index.html"></a>
+<script>
+  $(function (global_menu_third_map_link) {
+    $.ajax({
+      url: "/english/i15r6c0000003p10.html",
+      type: "GET",
+      dataType: "html",
+      async: false,
+      timeout: 1000,
+      error: function () {
+        $("#global_menu_pc_third_map").html("Couldn't get information");
+        $("#global_menu_sp_third_map").html("Couldn't get information");
+      },
+      success: function (html) {
+        let jq = $($.parseHTML(html));
+        let pc = jq.filter("#global_menu_pc_third_map_links").first().html();
+        $("#global_menu_pc_third_map").html(pc);
+        let sp = jq.filter("#global_menu_sp_third_map_links").first().html();
+        $("#global_menu_sp_third_map").prepend($(sp));
+
+        $("#global_menu_pc_following_logo").prop("href", $("#global_menu_pc_following_logo_hidden").prop("href"));
+      }
+    });
+  });
+</script>
+
+<div class="JPX-header-pc-global" id="global_menu_pc_third_map">
+  <nav class="JPX-header-pc-global-menu">
+  <ul>
+    <li class="-is-jpx-link">
+      <a href="#" id="global_menu_pc_following_logo">
+        <picture>
+          <img src="/english/_assets/img/image/logo_pc_menu.svg" alt="Japan Exchange Group" />
+        </picture>
+      </a>
+    </li>
+    
+      <li data-target-item="pc-menu-0-0">
+        <a href="/english/news/index.html"><span>News</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-1-0">
+        <a href="/english/markets/index.html"><span>Data &amp; Statistics</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-2-0">
+        <a href="/english/listing/index.html"><span>Listed Companies</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-3-0">
+        <a href="/english/equities/index.html"><span>Equities, Debt, Funds</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-4-0">
+        <a href="/english/derivatives/index.html"><span>Derivatives</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-5-0">
+        <a href="/english/rules-participants/index.html"><span>Rules &amp; Trading Participants</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-6-0">
+        <a href="/english/systems/index.html"><span>Systems</span></a>
+      </li>
+    
+      
+      <li data-target-item="pc-menu-7-0">
+        <a href="/english/regulation/index.html"><span>Self-Regulation</span></a>
+      </li>
+    
+      
+  </ul>
+</nav>
+  <div class="JPX-header-pc-global-data">
+  </div>
+  <div class="JPX-header-pc-global-shadow"></div>
+</div>
+<!-- /PCメニュー全ページ共通（PC） -->
+
+<!-- SPメニュー -->
+<div class="JPX-header-sp-global">
+  <!-- SP MENU -->
+  <nav class="JPX-header-sp-global-menu">
+    
+      <!-- SP MENUボタン -->
+      <div class="JPX-header-sp-global-ItemBtn">MENU</div>
+      <!-- /SP MENUボタン -->
+    
+    <div class="JPX-header-sp-global-ItemWrap" id="global_menu_sp_third_map">
+      
+<!-- 対象者別 -->
+<div class="JPX-header-menu-target">
+  <ul>
+    
+      <li class="-individual"><a href="/english/individuals/index.html"><span>For Individual Investors</span></a></li>
+    
+      <li class="-listed"><a href="/english/listed-companies/index.html"><span>For Listed Companies</span></a></li>
+    
+      <li class="-pre"><a href="/english/pre-listed-companies/index.html"><span>For Prospective Issuers</span></a></li>
+    
+      <li class="-participants"><a href="/english/participants/index.html"><span>For Trading Participants</span></a></li>
+    
+      <li class="-nstitutional"><a href="/english/institutional/index.html"><span>For Institutional Investors</span></a></li>
+    
+      <li class="-media"><a href="/english/media/index.html"><span>For Media</span></a></li>
+    
+  </ul>
+</div>
+<!-- /対象者別 -->
+      
+    </div>
+  </nav>
+  <!-- /SP MENU -->
+  
+  <!-- （SP 第5-6階層） -->
+  
+      <div class="JPX-header-sp-global-links">
+        <div class="JPX-header-sp-global-linksTitle ">
+          <a href="/english/markets/index.html">Data &amp; Statistics</a>
+        </div>
+        
+      <div class="JPX-header-sp-global-linksSubTitle ">
+        <a href="/english/markets/statistics-equities/index.html">Statistics (Equities)</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/daily/index.html">Daily Report</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/monthly/index.html">Monthly Statistics Report</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/price/index.html">Monthly Quotations</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/margin/index.html">Outstanding Margin Trading, etc.</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/short-selling/index.html">Short Selling Value</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle -is-active">
+        <a href="/english/markets/statistics-equities/investor-type/index.html">Trading by Type of Investors</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/program/index.html">Program/Arbitrage Trading</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/misc/index.html">Other Statistics</a>
+      </div>
+      
+      <div class="JPX-header-sp-global-linksSubSubTitle ">
+        <a href="/english/markets/statistics-equities/examination/index.html">Other Reports</a>
+      </div>
+      
+  
+      
+        
+      </div>
+    
+  <!-- /（SP 第5-6階層） -->
+
+</div>
+        <!-- /SPメニュー -->
+
+        <!-- その他 -->
+        <div class="JPX-header-menu-other">
+<ul>
+
+<li><a href="/english/corporate/about-jpx/access/index.html" ><span>Access</span></a></li>
+
+<li><a href="/english/contact/index.html" ><span>Contact us</span></a></li>
+
+<li><a href="/english/corporate/sustainability/index.html" ><span>Sustainability</span></a></li>
+
+</ul>
+</div>
+        <!-- /その他 -->
+
+        <!-- SNS -->
+        <div class="JPX-header-menu-sns">
+          <ul>
+            <li><a href="https://x.com/JPX_official_EN" rel="external"><img src="/english/_assets/img/svg/icn-sns-tw.svg" alt="X"></a></li>
+            <li><a href="https://www.facebook.com/JapanExchangeGroupGlobal" rel="external"><img src="/english/_assets/img/svg/icn-sns-fb.svg" alt="facebook"></a></li>
+            <li><a href="https://www.youtube.com/channel/UCnZA74T8a8dEbavWRq8F2nA" rel="external"><img src="/english/_assets/img/svg/icn-sns-yt.svg" alt="youtube"></a></li>
+          </ul>
+        </div>
+        <!-- /SNS -->
+
+        
+  <!-- 言語 -->
+  <div class="JPX-header-menu-language">
+    <ul>
+      
+          <li><a href="/markets/statistics-equities/investor-type/00-00-archives-01.html" title=""><span>Japanese</span></a></li>
+        <li><a href="/english/corporate/index.html"><span>About JPX</span></a></li>
+    </ul>
+  </div>
+  <!-- /言語 -->
+
+      </div>
+    </div>
+  </div>
+
+</header>
+
+  <div class="bread-crumb-box">
+    <div class="bread-crumb">
+      <div class="bread-crumb-data">
+        <ol>
+          
+              <li><a href="/english/index.html">HOME</a></li>
+            
+              <li><a href="/english/markets/index.html">Data &amp; Statistics</a></li>
+            
+              <li><a href="/english/markets/statistics-equities/index.html">Statistics (Equities)</a></li>
+            
+              <li><a href="/english/markets/statistics-equities/investor-type/index.html">Trading by Type of Investors</a></li>
+            
+              <li><a href="/english/markets/statistics-equities/investor-type/index.html">Equities</a></li>
+            
+              <li><a href="/english/markets/statistics-equities/investor-type/index.html">Weekly</a></li>
+            
+        </ol>
+      </div>
+      <div class="JPX-site-update">
+        
+      </div>
+    </div>
+  </div>
+
+    
+
+<!-- /ヘッダー出力 -->
+
+<noscript>
+<section class="JPX-section -is-attention">
+<div class="JPX-section-inner">
+<div class="JPX-noscript-wrapper">
+<div class="JPX-noscript">
+<div class="JPX-noscript-title">Please enable Javascript.</div>
+<div class="JPX-noscript-text">It is necessary to enable Javascript settings in order to properly view and operate this website. Please refer to support resources for your current browser for how to enable Javascript settings.</div>
+</div>
+</div>
+</div>
+</section>
+</noscript>
+
+    <!-- main-area -->
+    <div id="main-area" class="-is-fix">
+      <div><div class="headline-title-wrap"><h1 class="headline-title"><span>Trading by Type of Investors</span></h1></div></div>
+      <!-- main-areaIn -->
+      <div id="main-areaIn" class="-is-sidecontents">
+              <div id="readArea">
+       <section class="JPX-section">
+        
+<div>
+  <div class="tab-menu tab-menu5">
+    <ul class="heightLineParent">
+    
+      <li>
+        <a href="/english/markets/statistics-equities/investor-type/index.html" class="act-tab">Equities
+      </a>
+      </li>
+    
+      <li>
+        <a href="/english/markets/statistics-equities/investor-type/02.html" class="">ETFs
+      </a>
+      </li>
+    
+      <li>
+        <a href="/english/markets/statistics-equities/investor-type/03.html" class="">REITs
+      </a>
+      </li>
+    
+      <li>
+        <a href="/english/markets/statistics-equities/investor-type/04.html" class="">Investments in Listed Stocks by Nonresidential Investors (by region)
+      </a>
+      </li>
+    
+      <li>
+        <a href="/english/markets/statistics-equities/investor-type/07.html" class="">Survey Outline &amp; Definition of Investment Categories
+      </a>
+      </li>
+    
+    </ul>
+  </div>
+</div>
+
+        
+  <div>
+    <div class="tab-submenu">
+      <ul>
+        <li><a href="/english/markets/statistics-equities/investor-type/index.html" class="act-tab-sub">Weekly</a></li><li><a href="/english/markets/statistics-equities/investor-type/00-01.html">Monthly</a></li><li><a href="/english/markets/statistics-equities/investor-type/00-02.html">Annual</a></li>
+      </ul>
+    </div>
+  </div>
+
+        <div><h2 class="heading-title-mu"><span>Equities (Weekly)</span></h2></div>
+        <div>
+  <form action="" method="post" class="niceform">
+    <div class="number-select-box">
+      <div class="number-title">
+        <p>Archives:</p>
+      </div>
+      <div class="number-select">
+        <select class="backnumber" size="1">
+          <option value="/english/markets/statistics-equities/investor-type/index.html">Current Data</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-00.html">2026</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-01.html" selected="selected">2025</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-02.html">2024</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-03.html">2023</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-04.html">2022</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-05.html">2021</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-06.html">2020</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-07.html">2019</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-08.html">2018</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-09.html">2017</option><option value="/english/markets/statistics-equities/investor-type/00-00-archives-10.html">2016</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+        
+        
+            <div>
+              <div class="component-normal-table">
+                <table class="overtable fixedhead" _fixedhead="rows:1; cols:0;div-auto-size: none;">
+                  <tr>
+                    <th>Date</th>
+                    <th colspan="2">Volume</th>
+                    <th colspan="2">Value</th>
+                  </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Dec 2025, Week5（12/29 - 12/30）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000l4py-att/stock_vol_1_251205.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000l4py-att/stock_vol_1_251205.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000l4py-att/stock_val_1_251205.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000l4py-att/stock_val_1_251205.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Dec 2025, Week4（12/22 - 12/26）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000kzm6-att/stock_vol_1_251204.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000kzm6-att/stock_vol_1_251204.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000kzm6-att/stock_val_1_251204.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000kzm6-att/stock_val_1_251204.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Dec 2025, Week3（12/15 - 12/19）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000gcsn-att/stock_vol_1_251203.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000gcsn-att/stock_vol_1_251203.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000gcsn-att/stock_val_1_251203.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000gcsn-att/stock_val_1_251203.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Dec 2025, Week2（12/8 - 12/12）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dtm8-att/stock_vol_1_251202.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dtm8-att/stock_vol_1_251202.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dtm8-att/stock_val_1_251202.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dtm8-att/stock_val_1_251202.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Dec 2025, Week1（12/1 - 12/5）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dfoq-att/stock_vol_1_251201.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dfoq-att/stock_vol_1_251201.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dfoq-att/stock_val_1_251201.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000dfoq-att/stock_val_1_251201.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Nov 2025, Week4（11/25 - 11/28）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000b1i9-att/stock_vol_1_251104.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000b1i9-att/stock_vol_1_251104.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000b1i9-att/stock_val_1_251104.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi000000b1i9-att/stock_val_1_251104.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Nov 2025, Week3（11/17 - 11/21）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000008lwh-att/stock_vol_1_251103.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000008lwh-att/stock_vol_1_251103.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000008lwh-att/stock_val_1_251103.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000008lwh-att/stock_val_1_251103.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Nov 2025, Week2（11/10 - 11/14）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000061qx-att/stock_vol_1_251102.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000061qx-att/stock_vol_1_251102.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000061qx-att/stock_val_1_251102.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000061qx-att/stock_val_1_251102.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Nov 2025, Week1（11/4 - 11/7）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000003irj-att/stock_vol_1_251101.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000003irj-att/stock_vol_1_251101.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000003irj-att/stock_val_1_251101.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000003irj-att/stock_val_1_251101.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Oct 2025, Week5（10/27 - 10/31）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000036i1-att/stock_vol_1_251005.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000036i1-att/stock_vol_1_251005.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000036i1-att/stock_val_1_251005.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi00000036i1-att/stock_val_1_251005.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Oct 2025, Week4（10/20 - 10/24）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000002oa3-att/stock_vol_1_251004.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000002oa3-att/stock_vol_1_251004.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000002oa3-att/stock_val_1_251004.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/vk0khi0000002oa3-att/stock_val_1_251004.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Oct 2025, Week3（10/14 - 10/17）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000029feg-att/stock_vol_1_251003.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000029feg-att/stock_vol_1_251003.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000029feg-att/stock_val_1_251003.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000029feg-att/stock_val_1_251003.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Oct 2025, Week2（10/6 - 10/10）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000293by-att/stock_vol_1_251002.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000293by-att/stock_vol_1_251002.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000293by-att/stock_val_1_251002.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000293by-att/stock_val_1_251002.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Oct 2025, Week1（9/29 - 10/3）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028ph6-att/stock_vol_1_251001.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028ph6-att/stock_vol_1_251001.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028ph6-att/stock_val_1_251001.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028ph6-att/stock_val_1_251001.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Sep 2025, Week4（9/22 - 9/26）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028cu2-att/stock_vol_1_250904.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028cu2-att/stock_vol_1_250904.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028cu2-att/stock_val_1_250904.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000028cu2-att/stock_val_1_250904.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Sep 2025, Week3（9/16 - 9/19）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000027zu5-att/stock_vol_1_250903.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000027zu5-att/stock_vol_1_250903.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000027zu5-att/stock_val_1_250903.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000027zu5-att/stock_val_1_250903.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Sep 2025, Week2（9/8 - 9/12）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000025lif-att/stock_vol_1_250902.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000025lif-att/stock_vol_1_250902.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000025lif-att/stock_val_1_250902.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000025lif-att/stock_val_1_250902.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Sep 2025, Week1（9/1 - 9/5）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000256cp-att/stock_vol_1_250901.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000256cp-att/stock_vol_1_250901.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000256cp-att/stock_val_1_250901.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000256cp-att/stock_val_1_250901.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Aug 2025, Week4（8/25 - 8/29）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024rpz-att/stock_vol_1_250804.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024rpz-att/stock_vol_1_250804.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024rpz-att/stock_val_1_250804.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024rpz-att/stock_val_1_250804.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Aug 2025, Week3（8/18 - 8/22）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024cir-att/stock_vol_1_250803.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024cir-att/stock_vol_1_250803.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024cir-att/stock_val_1_250803.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000024cir-att/stock_val_1_250803.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Aug 2025, Week2（8/12 - 8/15）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023y12-att/stock_vol_1_250802.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023y12-att/stock_vol_1_250802.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023y12-att/stock_val_1_250802.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023y12-att/stock_val_1_250802.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Aug 2025, Week1（8/4 - 8/8）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023nmh-att/stock_vol_1_250801.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023nmh-att/stock_vol_1_250801.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023nmh-att/stock_val_1_250801.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000023nmh-att/stock_val_1_250801.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jul 2025, Week5（7/28 - 8/1）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001v1op-att/stock_vol_1_250705.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001v1op-att/stock_vol_1_250705.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001v1op-att/stock_val_1_250705.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001v1op-att/stock_val_1_250705.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jul 2025, Week4（7/22 - 7/25）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ulvg-att/stock_vol_1_250704.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ulvg-att/stock_vol_1_250704.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ulvg-att/stock_val_1_250704.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ulvg-att/stock_val_1_250704.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jul 2025, Week3（7/14 - 7/18）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001uanr-att/stock_vol_1_250703.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001uanr-att/stock_vol_1_250703.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001uanr-att/stock_val_1_250703.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001uanr-att/stock_val_1_250703.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jul 2025, Week2（7/7 - 7/11）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001twbx-att/stock_vol_1_250702.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001twbx-att/stock_vol_1_250702.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001twbx-att/stock_val_1_250702.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001twbx-att/stock_val_1_250702.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jul 2025, Week1（6/30 - 7/4）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001tl3b-att/stock_vol_1_250701.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001tl3b-att/stock_vol_1_250701.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001tl3b-att/stock_val_1_250701.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001tl3b-att/stock_val_1_250701.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jun 2025, Week4（6/23 - 6/27）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001p55r-att/stock_vol_1_250604.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001p55r-att/stock_vol_1_250604.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001p55r-att/stock_val_1_250604.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001p55r-att/stock_val_1_250604.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jun 2025, Week3（6/16 - 6/20）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001opge-att/stock_vol_1_250603.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001opge-att/stock_vol_1_250603.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001opge-att/stock_val_1_250603.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001opge-att/stock_val_1_250603.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jun 2025, Week2（6/9 - 6/13）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001oc6o-att/stock_vol_1_250602.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001oc6o-att/stock_vol_1_250602.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001oc6o-att/stock_val_1_250602.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001oc6o-att/stock_val_1_250602.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jun 2025, Week1（6/2 - 6/6）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nyrd-att/stock_vol_1_250601.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nyrd-att/stock_vol_1_250601.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nyrd-att/stock_val_1_250601.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nyrd-att/stock_val_1_250601.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">May 2025, Week5（5/26 - 5/30）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nm84-att/stock_vol_1_250505.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nm84-att/stock_vol_1_250505.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nm84-att/stock_val_1_250505.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001nm84-att/stock_val_1_250505.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">May 2025, Week4（5/19 - 5/23）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001n6fb-att/stock_vol_1_250504.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001n6fb-att/stock_vol_1_250504.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001n6fb-att/stock_val_1_250504.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001n6fb-att/stock_val_1_250504.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">May 2025, Week3（5/12 - 5/16）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001kq7c-att/stock_vol_1_250503.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001kq7c-att/stock_vol_1_250503.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001kq7c-att/stock_val_1_250503.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001kq7c-att/stock_val_1_250503.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">May 2025, Week2（5/7 - 5/9）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ial1-att/stock_vol_1_250502.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ial1-att/stock_vol_1_250502.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ial1-att/stock_val_1_250502.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001ial1-att/stock_val_1_250502.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">May 2025, Week1（4/28 - 5/2）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001fzuf-att/stock_vol_1_250501.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001fzuf-att/stock_vol_1_250501.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001fzuf-att/stock_val_1_250501.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000001fzuf-att/stock_val_1_250501.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Apr 2025, Week4（4/21 - 4/25）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000017h5b-att/stock_vol_1_250404.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000017h5b-att/stock_vol_1_250404.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000017h5b-att/stock_val_1_250404.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000017h5b-att/stock_val_1_250404.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Apr 2025, Week3（4/14 - 4/18）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000171y0-att/stock_vol_1_250403.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000171y0-att/stock_vol_1_250403.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000171y0-att/stock_val_1_250403.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000171y0-att/stock_val_1_250403.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Apr 2025, Week2（4/7 - 4/11）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000014o0g-att/stock_vol_1_250402.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000014o0g-att/stock_vol_1_250402.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000014o0g-att/stock_val_1_250402.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000014o0g-att/stock_val_1_250402.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Apr 2025, Week1（3/31 - 4/4）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013yec-att/stock_vol_1_250401.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013yec-att/stock_vol_1_250401.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013yec-att/stock_val_1_250401.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013yec-att/stock_val_1_250401.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Mar 2025, Week4（3/24 - 3/28）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013m66-att/stock_vol_1_250304.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013m66-att/stock_vol_1_250304.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013m66-att/stock_val_1_250304.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000013m66-att/stock_val_1_250304.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Mar 2025, Week3（3/17 - 3/21）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000135pm-att/stock_vol_1_250303.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000135pm-att/stock_vol_1_250303.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000135pm-att/stock_val_1_250303.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq00000135pm-att/stock_val_1_250303.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Mar 2025, Week2（3/10 - 3/14）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010rv9-att/stock_vol_1_250302.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010rv9-att/stock_vol_1_250302.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010rv9-att/stock_val_1_250302.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010rv9-att/stock_val_1_250302.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Mar 2025, Week1（3/3 - 3/7）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010ebi-att/stock_vol_1_250301.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010ebi-att/stock_vol_1_250301.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010ebi-att/stock_val_1_250301.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq0000010ebi-att/stock_val_1_250301.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Feb 2025, Week4（2/25 - 2/28）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xtmb-att/stock_vol_1_250204.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xtmb-att/stock_vol_1_250204.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xtmb-att/stock_val_1_250204.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xtmb-att/stock_val_1_250204.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Feb 2025, Week3（2/17 - 2/21）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xh1q-att/stock_vol_1_250203.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xh1q-att/stock_vol_1_250203.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xh1q-att/stock_val_1_250203.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000xh1q-att/stock_val_1_250203.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Feb 2025, Week2（2/10 - 2/14）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000swlj-att/stock_vol_1_250202.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000swlj-att/stock_vol_1_250202.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000swlj-att/stock_val_1_250202.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000swlj-att/stock_val_1_250202.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Feb 2025, Week1（2/3 - 2/7）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000odma-att/stock_vol_1_250201.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000odma-att/stock_vol_1_250201.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000odma-att/stock_val_1_250201.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/sjcobq000000odma-att/stock_val_1_250201.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jan 2025, Week4（1/27 - 1/31）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000sjvm-att/stock_vol_1_250104.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000sjvm-att/stock_vol_1_250104.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000sjvm-att/stock_val_1_250104.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000sjvm-att/stock_val_1_250104.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jan 2025, Week3（1/20 - 1/24）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000r2gs-att/stock_vol_1_250103.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000r2gs-att/stock_vol_1_250103.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000r2gs-att/stock_val_1_250103.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000r2gs-att/stock_val_1_250103.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jan 2025, Week2（1/14 - 1/17）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000qhg6-att/stock_vol_1_250102.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000qhg6-att/stock_vol_1_250102.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000qhg6-att/stock_val_1_250102.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000qhg6-att/stock_val_1_250102.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                    <tr>
+                      <td width="40%" class="a-center">Jan 2025, Week1（1/6 - 1/10）</td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000pp8l-att/stock_vol_1_250101.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000pp8l-att/stock_vol_1_250101.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000pp8l-att/stock_val_1_250101.pdf" rel="external"><img src="/english/common/images/icon/icon-pdf.png" alt="icon-pdf" title="icon-pdf" width="18" height="18" /></a></td>
+                      <td width="15%" class="a-center"><a href="/english/markets/statistics-equities/investor-type/dh3otn000000pp8l-att/stock_val_1_250101.xls" rel="external"><img src="/english/common/images/icon/icon-xls.png" alt="icon-xls" title="icon-xls" width="18" height="18" /></a></td>
+                    </tr>
+                  
+                </table>
+              </div>
+            </div>
+          
+<div>
+  
+  <div class="component-note">
+    <span>(Note)</span>
+    <ul>
+      
+            <li class="note00">&#xFF65;Updated at approximately 3:00 p.m. on the fourth business day of each week.</li>
+          
+    </ul>
+  </div>
+  
+</div>
+
+    <div>
+  <div class="component-inquiry">
+    <p class="inquiry-title"><span>Contact</span></p>
+    
+      <p class="inquiry-text">
+      Tokyo Stock Exchange, Inc.　Equities, Data Services<br />
+      E-mail:<a href="mailto:databank-geppou@jpx.co.jp">databank-geppou@jpx.co.jp</a><br />
+    </p>
+    
+  </div>
+</div>
+
+    
+       </section>
+      </div><!-- /readArea -->
+        
+<!-- サイドメニュー出力 -->
+
+      <div class="JPX-sidecontents">
+        <div class="JPX-sidecontents-box">
+          <div class="JPX-sidecontents-title"><a href="/english/markets/index.html">Data &amp; Statistics</a></div>
+          
+            <ul class="JPX-sidemenu-list">
+              
+      <li><a href="/english/markets/statistics-equities/index.html" class="-is-active-parent">Statistics (Equities)</a>
+        
+          <ul class="JPX-sidemenu-list-sub">
+            
+      <li><a href="/english/markets/statistics-equities/daily/index.html" class="">Daily Report</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/monthly/index.html" class="">Monthly Statistics Report</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/price/index.html" class="">Monthly Quotations</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/margin/index.html" class="">Outstanding Margin Trading, etc.</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/short-selling/index.html" class="">Short Selling Value</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/investor-type/index.html" class="-is-active">Trading by Type of Investors</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/program/index.html" class="">Program/Arbitrage Trading</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/misc/index.html" class="">Other Statistics</a>
+        
+      </li>
+    
+      <li><a href="/english/markets/statistics-equities/examination/index.html" class="">Other Reports</a>
+        
+      </li>
+    
+  
+          </ul>
+        
+      </li>
+    
+            </ul>
+          
+        </div>
+      </div>
+    
+
+<!-- /サイドメニュー出力 -->
+      </div>
+      <!-- /main-areaIn -->
+
+      <!-- フッター出力 -->
+<!-- ページトップ -->
+<div class="JPX-PageTop"><a href="#"><span>PageTop</span></a></div>
+<!-- /ページトップ -->
+<footer class="JPX-footer">
+  <div class="JPX-footer-wrapper">
+    <!-- ↓ PCのみ表示 ↓ -->
+    <div class="JPX-footer-sitemap-background">
+      <div class="JPX-footer-sitemap">
+        
+          <script>
+            $(function(){
+              $.ajax({
+                url:"/english/tvdivq000000zpw5.xml",
+                type:"GET",
+                dataType:"xml",
+                async:false,
+                timeout:1000,
+                error:function() {
+                  $("#therd_map").html("Couldn't get information");
+                },
+                success:function(xml){
+                  let html = '';
+                  $(xml).children("menu_list").children("menu").each(function() {
+                    html += '<div class="JPX-footer-sitemap-data">';
+                    
+                    html += '<div class="JPX-footer-sitemap-title"><a href="'
+                        +$(this).find('second_url').text()
+                        +'">'
+                        +$(this).find('second_name').text()
+                        +'</a></div>';
+                    
+                    html += '<ul class="JPX-footer-sitemap-list">';
+                    $(this).children("menu_list").children("menu").each(function() {
+                      html += '<li><a href="'
+                        +$(this).find('third_url').text()
+                        +'">'
+                        +$(this).find('third_name').text()
+                        +'</a></li>';
+                    });
+                    html += '</ul>';
+                    html += '</div>';
+                  });
+
+                  $("#therd_map").append(html);
+                }
+              });
+            });
+          </script>
+          <div class="JPX-footer-sitemap-box" id="therd_map">
+          </div>
+        
+<div class="JPX-footer-purpose-box">
+  
+    <div class="JPX-footer-purpose -individual"><a href="/english/individuals/index.html"><span>For Individual Investors</span></a></div>
+  
+    <div class="JPX-footer-purpose -company"><a href="/english/listed-companies/index.html"><span>For Listed Companies</span></a></div>
+  
+    <div class="JPX-footer-purpose -consider"><a href="/english/pre-listed-companies/index.html"><span>For Prospective Issuers</span></a></div>
+  
+    <div class="JPX-footer-purpose -participant"><a href="/english/participants/index.html"><span>For Trading Participants</span></a></div>
+  
+    <div class="JPX-footer-purpose -investor"><a href="/english/institutional/index.html"><span>For Institutional Investors</span></a></div>
+  
+    <div class="JPX-footer-purpose -media"><a href="/english/media/index.html"><span>For Media</span></a></div>
+  
+</div>
+<!-- /対象者別 -->
+        
+      </div>
+      <!-- ↑ PCのみ表示 ↑ -->
+      
+      <div class="JPX-footer-sub">
+        <ul class="JPX-footer-sublink">
+
+  <li><a href="/english/corporate/learning/tour/index.html" ><span>Visit JPX</span></a></li>
+
+</ul>
+        <ul class="JPX-footer-sns-icon">
+          <li><a href="https://x.com/JPX_official_EN" rel="external"><img src="/english/_assets/img/svg/icn-sns-tw.svg" alt="X"></a></li>
+          <li><a href="https://www.facebook.com/JapanExchangeGroupGlobal" rel="external"><img src="/english/_assets/img/svg/icn-sns-fb.svg" alt="facebook"></a></li>
+          <li><a href="https://www.youtube.com/channel/UCnZA74T8a8dEbavWRq8F2nA" rel="external"><img src="/english/_assets/img/svg/icn-sns-yt.svg" alt="youtube"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="JPX-footer-main">
+
+      <div class="JPX-footer-link-box">
+  <ul class="JPX-footer-link">
+
+  <li><a href="/english/faq/index.html" ><span>FAQ</span></a></li>
+
+  <li><a href="/english/sitemap/index.html" ><span>Sitemap</span></a></li>
+
+  <li><a href="/english/term-of-use/index.html" ><span>Disclaimer/ Terms of Use</span></a></li>
+
+  <li><a href="/english/corporate/governance/security/personal-information/index.html" ><span>Handling of Personal Information</span></a></li>
+
+  </ul>
+</div>
+
+      <div class="JPX-footer-logo">
+        <div class="JPX-footer-logo-img">
+          <a href="/english/index.html">
+            <img src="/english/_assets/img/image/logo_full.png" alt="JPX">
+          </a>
+        </div>
+        <div class="JPX-footer-copylight">&copy; Japan Exchange Group, Inc.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- /フッター出力 -->
+
+    </div>
+    <!-- /main-area -->
+  </div>
+  <!-- /wrapper-area -->
+
+  <!-- Bodyタグ末尾の共通処理 -->
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '191019531472708');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=191019531472708&amp;ev=PageView&amp;noscript=1" />
+  </noscript>
+
+  <script type="text/javascript" src="/english/_assets/js/slick.min.js"></script>
+  <script type="text/javascript" src="/english/_assets/js/jquery.matchHeight.js"></script>
+  <script type="text/javascript" src="/english/_assets/js/script.js"></script>
+  <script type="text/javascript" src="/english/_assets/js/common.js"></script>
+  <script type="text/javascript" src="/english/_assets/js/heightLine.js"></script>
+<!--  <script type="text/javascript" src="/english/_assets/js/fixed_midashi.js"></script> -->
+  <script type="text/javascript" src="/english/_assets/js/fix-table-header.js"></script>
+  
+  <script type="text/javascript" src="/english/_assets/js2/lity.js"></script>
+  <script type="text/javascript" src="/english/_assets/js/link.js"></script>
+  <script type="text/javascript" src="/english/_assets/js/jquery.prettyPhoto.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/jquery.mousewheel.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/jquery.jscrollpane.min.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/jquery.aslider.min.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/jquery.bxslider.min.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/iframe.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/add-action.js"></script>
+  <script type="text/javascript" src="/english/_assets/js2/add_attribute_gid.js"></script>
+  
+
+  <!-- End Facebook Pixel Code -->
+  <!-- /Bodyタグ末尾の共通処理 -->
+
+</body>
+</html>

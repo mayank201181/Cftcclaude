@@ -1,0 +1,111 @@
+<div data-partial="/cot-report-links" data-pageid="82615"><div id="integration-id-1525a64" class="contents ice"><div data-page="82615" data-slot="body"><div><div class="row">
+  <div class="true-grid-4">
+    <p class="sublabel">Helpful Links</p>
+    <ul class="document-list spacer-lg">
+      <li>
+        <a href="/publicdocs/futures/CoT_Notes.pdf"
+          >ICE Futures Europe COT Explanatory Notes</a
+        >
+      </li>
+      <li>
+        <a
+          href="http://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+          >Link to CFTC COT Report</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="true-grid-3">
+    <p class="sublabel">ICE Historical Data Files</p>
+    <ul class="document-list">
+      <li>
+        <a href="/publicdocs/futures/COTHist2026.csv"
+          >2026 Year to Date Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2025.csv"
+          >2025 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2024.csv"
+          >2024 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2023.csv"
+          >2023 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2022.csv"
+          >2022 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2021.csv"
+          >2021 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2020.csv"
+          >2020 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2019.csv"
+          >2019 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2018.csv"
+          >2018 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2017.csv"
+          >2017 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2016.csv"
+          >2016 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2015.csv"
+          >2015 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2014.csv"
+          >2014 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2013.csv"
+          >2013 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2012.csv"
+          >2012 Historical Data (CSV)</a
+        >
+      </li>
+      <li>
+        <a href="/publicdocs/futures/COTHist2011.csv"
+          >2011 Historical Data (CSV)</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="true-grid-3">
+    <p class="sublabel">LIFFE Historical Data Files</p>
+    <ul class="document-list">
+      <li>
+        <a href="/publicdocs/futures/LIFFE_COT_Hist.csv">Liffe COT History</a>
+      </li>
+    </ul>
+  </div>
+</div></div></div></div></div>

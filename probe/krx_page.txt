@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<script type='text/javascript'>
+alert('로그인 또는 회원가입이 필요합니다.');
+location.href='/contents/MDC/COMS/client/MDCCOMS001.cmd?locale=ko_KR&redirectURL=b2h0aEZNWThrQ2s4amxkQjNPS3pLdmxteXFTdGFHRElNWlh0c2pYbU4rRnRVSml4MXpWeWwrZUpBVUlJUmlERUczRXlkczJrSkloZHdYV3lwVm9tSStnZ2xwOUFHcFZ4RXc3bTJrdm4xQUk9';
+</script>
+</body>
+</html>

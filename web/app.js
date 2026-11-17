@@ -290,29 +290,48 @@ function allMetrics() {
   if (!cache.has(ck)) cache.set(ck, META.markets.map((m) => metrics(m.key)));
   return cache.get(ck);
 }
-/* weekly sum across markets: mode usd | dv01 | contracts */
+/* A market whose newest report is not out yet (ICE Europe after a US holiday, or between
+   the two CFTC reports of a week) is "late" for up to this many rows; after that it is
+   treated as gone, the same cut-off metrics() uses. */
+const LATE_ROWS = 4;
+/* weekly sum across markets: mode usd | dv01 | contracts.
+   A late market keeps its last value in the newest rows, so the total compares like with
+   like; without that it would drop out of the sum and fake a position change. The keys
+   carried this way are returned as `.late` on the series. */
 function aggSeries(keys, { sign = 1, mode = 'usd', role = S.role, kind = S.kind } = {}) {
   const ck = `a|${keys.join(',')}|${sign}|${mode}|${role}|${kind}`;
   if (cache.has(ck)) return cache.get(ck);
-  const n = TS.length, out = new Float64Array(n), have = new Uint16Array(n);
+  const n = TS.length, out = new Float64Array(n), have = new Uint16Array(n), late = [];
   for (const k of keys) {
     const m = MK[k];
     if (!m || !DATA[kind][k]) continue;
     const cl = catsFor(m, role);
     if (!cl) continue;
     const s = ser(k, kind, cl), npc = NPC[k];
+    let last = -1, lastV = NaN;
     for (let i = 0; i < n; i++) {
       const v = mode === 'dv01' ? s.net[i] * m.dv01 : mode === 'contracts' ? s.net[i] : s.net[i] * (npc ? npc[i] : NaN);
-      if (v === v) { out[i] += sign * v; have[i]++; }
+      if (v === v) { out[i] += sign * v; have[i]++; last = i; lastV = v; }
+    }
+    if (last >= 0 && last < n - 1 && last >= n - 1 - LATE_ROWS) {
+      for (let i = last + 1; i < n; i++) { out[i] += sign * lastV; have[i]++; }
+      late.push(k);
     }
   }
   for (let i = 0; i < n; i++) if (!have[i]) out[i] = NaN;
+  out.late = late;
   cache.set(ck, out);
   return out;
 }
 function aggStats(a) {
   const t = lastIdx(a);
-  return { t, v: a[t], d1: a[t] - a[t - 1], d4: a[t] - a[t - 4], p: prank(a, t, S.lb), spark: Array.from(a.subarray(Math.max(0, t - 51), t + 1)) };
+  return { t, v: a[t], d1: a[t] - a[t - 1], d4: a[t] - a[t - 4], p: prank(a, t, S.lb), spark: Array.from(a.subarray(Math.max(0, t - 51), t + 1)), late: a.late || [] };
+}
+/* tile note for a total that carries late markets at their last value */
+function lateNote(late) {
+  if (!late || !late.length) return '';
+  const names = late.map((k) => (MK[k] ? MK[k].name : k)).join(', ');
+  return ` <span style="white-space:nowrap" title="${esc(names)}: newest report not out yet, last value carried forward">· ${late.length} late</span>`;
 }
 
 /* ------------------------------------------------------------------ themes */
@@ -831,7 +850,7 @@ RENDER.overview = (sec) => {
       ${tileHTML({ label: 'US equity index futures', value: fmtUSD(eq.v), sub: `Δ1w ${fmtUSD(eq.d1, true)} · ${pctSub(eq.p)}`, spark: eq.spark, title: 'S&P 500, Nasdaq-100, Dow, Russell 2000 and MidCap futures' })}
       ${tileHTML({ label: 'UST futures DV01 · asset managers', value: fmtUSD(amDv.v) + '/bp', sub: `Δ1w ${fmtUSD(amDv.d1, true)} · ${pctSub(amDv.p)}`, spark: amDv.spark })}
       ${tileHTML({ label: 'UST futures DV01 · leveraged funds', value: fmtUSD(lfDv.v) + '/bp', sub: `Δ1w ${fmtUSD(lfDv.d1, true)} · ${pctSub(lfDv.p)}`, spark: lfDv.spark, title: 'Dominated by the cash-futures basis trade; read changes, not the level' })}
-      ${tileHTML({ label: 'Commodities, net', value: fmtUSD(cmd.v), sub: `Δ1w ${fmtUSD(cmd.d1, true)} · ${pctSub(cmd.p)}`, spark: cmd.spark })}
+      ${tileHTML({ label: 'Commodities, net', value: fmtUSD(cmd.v), sub: `Δ1w ${fmtUSD(cmd.d1, true)} · ${pctSub(cmd.p)}${lateNote(cmd.late)}`, spark: cmd.spark })}
       ${top ? tileHTML({ label: 'Most crowded theme', value: esc(top.th.name), sub: `score <b>${Math.round(top.now)}</b> · Δ4w ${fmtN(top.d4, 0, true)} · <span class="pill ${top.status.k}">${top.status.label}</span>` }) : ''}
     </div>
     ${panel('Crowding map', { note: `Every market, ${esc(ROLES[S.role].short)}. Click a row for its charts.`, tools: `${HEAT_KEY}<button class="btn" data-copy="ov-map">Copy</button>`, body: '<div class="tablewrap" id="ov-map"></div>', bodyClass: '' })}
@@ -858,7 +877,7 @@ function assetTiles(asset, rows) {
   const statTile = (label, a, opt = {}) => {
     const s = aggStats(a);
     const v = opt.fmt ? opt.fmt(s.v) : fmtUSD(s.v);
-    return tileHTML({ label, value: v, sub: `Δ1w ${opt.fmt ? opt.fmt(s.d1, true) : fmtUSD(s.d1, true)} · ${pctSub(s.p)}`, spark: s.spark, title: opt.title || '' });
+    return tileHTML({ label, value: v, sub: `Δ1w ${opt.fmt ? opt.fmt(s.d1, true) : fmtUSD(s.d1, true)} · ${pctSub(s.p)}${lateNote(s.late)}`, spark: s.spark, title: opt.title || '' });
   };
   const dvf = (v, plus) => fmtUSD(v, plus) + '/bp';
   if (asset === 'FX') {
@@ -1452,6 +1471,7 @@ RENDER.notes = (sec) => {
           <li><b>FX options</b>: DTCC data has no buyer or seller, so strikes show where open interest sits (pin and gamma levels), not who is long. Some trades report the pair in reverse order; strikes are normalised to market convention.</li>
           <li><b>Prices</b> are continuous front-month futures from Yahoo Finance, so roll gaps can distort single-week returns. MSCI EM/EAFE use ETF-scaled proxies, VIX notional uses spot VIX, SOFR price moves use 100 minus the 13-week bill yield.</li>
           <li><b>Revisions</b>: the CFTC occasionally revises recent weeks; each refresh re-pulls the last five weeks.</li>
+          <li><b>Late reports</b>: when a contract's newest report is not out yet (ICE Europe after a US holiday, or between the two CFTC reports of a week), sector totals keep its last value so the weekly change compares like with like. The tile shows how many are late; the contracts are listed under Stale contracts below.</li>
         </ul>
         <h4>Data status</h4>
         <dl class="kv">

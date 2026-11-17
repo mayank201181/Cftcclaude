@@ -17,7 +17,7 @@ futures only, 3-year percentiles unless stated:
 | Field | What it is |
 |---|---|
 | `report_date`, `prices_to`, `schedule` | positions date (Tuesday on the weekly schedule; Monday or Wednesday once `schedule.kind` is `twice-weekly`), last daily close, release schedule seen in the data |
-| `aggregates` | USD vs G10, US equities, UST DV01, commodity sectors: value, 1w and 4w change, percentile |
+| `aggregates` | USD vs G10, US equities, UST DV01, commodity sectors: value, 1w and 4w change, percentile. `late` lists members whose newest report is not out yet: their last value is carried forward, so the changes exclude them |
 | `spec`, `asset_managers`, `legacy_noncomm_fx` | per market: net, weekly change, USD notional and flow, % OI, percentiles (1Y/3Y/5Y/10Y/All), z, flow z, driver, price moves (`px_1w` over the latest report week, `px_since_report` from the positions date to the last close) |
 | `themes` | score 0-100, 4w and 13w change, status, legs with their scores |
 | `signals` | the don't-miss list shown on the tab |
@@ -76,6 +76,8 @@ the market's chart.
   schedule a Monday report starts a new week and Friday's (Wednesday positions)
   replaces it, so "weekly change" means against the previous week's last report.
   Say which positions date you are reading.
+- When an aggregate has a `late` list, say so if you quote it (for example "ICE Brent and
+  gasoil are a week old"). Markets missing from `spec` are stale; do not describe them as new.
 - Mark every option price or risk/reward figure that is not from the data as an estimate.
 - Plain words, short sentences, units on every number. No hype, no filler, no
   "not X but Y" framing. Name what you are unsure of in the verify line.

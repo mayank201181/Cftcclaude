@@ -727,7 +727,7 @@ async function buildDigest() {
   const live = (role) => { S.role = role; return allMetrics().filter((r) => !r.na && !r.stale); };
   const spec = live('spec'), am = live('am'), nc = live('nc');
   S.role = 'spec';
-  const agg = (keys, o) => { const a = aggStats(aggSeries(keys, o)); return { v: r2(a.v / 1e9, 2), d1: r2(a.d1 / 1e9, 2), d4: r2(a.d4 / 1e9, 2), pctl: r2(a.p, 0) }; };
+  const agg = (keys, o) => { const a = aggStats(aggSeries(keys, o)); return { v: r2(a.v / 1e9, 2), d1: r2(a.d1 / 1e9, 2), d4: r2(a.d4 / 1e9, 2), pctl: r2(a.p, 0), late: a.late.length ? a.late : undefined }; };
   const themes = allThemes().map(themeData).map((d) => ({ key: d.th.key, name: d.th.name, score: r2(d.now, 0), d4: r2(d.d4, 0), d13: r2(d.d13, 0), status: d.status.label, mom_4w: r2(d.mom * 100), legs: d.legs.filter((l) => !l.na && l.score).map((l) => `${l.leg.s > 0 ? '+' : '-'}${l.leg.m}:${r2(l.score[d.t], 0)}`).join(' ') }));
   const S0 = Object.assign({}, S); S.corrSrc = 'returns'; S.corrOrient = true; S.corrLb = 156; S.corrCrowded = false;
   const w = washout();

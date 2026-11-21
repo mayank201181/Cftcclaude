@@ -1,0 +1,124 @@
+<div data-partial="/report-center/category/commitment-of-trader" data-pageid="85460"><div id="integration-id-f785d5a" class="contents ice"><div data-page="85460" data-slot="body"><div><style>
+  .folio-pane {
+      background-image: url("/publicdocs/cmsdata/ice/images/rc_traders.jpg");
+      background-repeat: no-repeat;
+      background-position: right bottom;
+  }
+</style>
+
+<div class="row">
+  <p class="spacer-30"></p>
+  <div class="true-grid-half">
+    <div class="column-list">
+      <h5>ICE Futures Europe</h5>
+      <ul class="list-unstyled">
+        <li>
+          <a href="/report/122" class="standalone-link"
+            >Exchange Commitments of Traders</a
+          >
+        </li>
+        <li>
+          <a href="/report/302" class="standalone-link"
+            >EU Financials Commitments of Traders</a
+          >
+        </li>
+      </ul>
+
+      <h5>Helpful Links</h5>
+      <ul class="list-unstyled">
+        <li>
+          <a href="/publicdocs/futures/CoT_Notes.pdf" class="standalone-link"
+            >ICE Futures Europe COT Explanatory Notes</a
+          >
+        </li>
+        <li>
+          <a
+            href="http://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+            class="standalone-link"
+            >Link to CFTC COT Report</a
+          >
+        </li>
+        <li>
+          <a
+            href="/publicdocs/futures/LIFFE_COT_Hist.csv"
+            class="standalone-link"
+            >Liffe COT Historical Data</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="true-grid-half">
+    <div class="column-list">
+      <h5>ICE Historical Data Files</h5>
+      <ul class="list-unstyled">
+        <li>
+          <a href="/publicdocs/futures/COTHist2026.csv" class="standalone-link"
+            >2026 Year to Date Data</a
+          >
+        </li>
+        <li>
+          <a href="/publicdocs/futures/COTHist2025.csv" class="standalone-link"
+            >2025 Historical Data</a
+          >
+        </li>
+        <li>
+          <a href="/publicdocs/futures/COTHist2024.csv" class="standalone-link"
+            >2024 Historical Data</a
+          >
+        </li>
+        <li>
+          <a href="/publicdocs/futures/COTHist2023.csv" class="standalone-link"
+            >2023 Historical Data</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+  <p class="spacer-30"></p>
+  <div class="true-grid-half">
+    <h5>ICE Futures Europe / ICE Endex</h5>
+
+    <ul class="list-unstyled">
+      <li>
+        <a href="/report/234" class="standalone-link"
+          >MIFID II Commitments of Traders</a
+        >
+      </li>
+    </ul>
+
+    <p class="spacer-md"></p>
+
+    <div>
+      <em
+        >NOTE: The Commitments of Traders reports required under MIFID II to be
+        published by the Exchange will calculate positions differently to how
+        they are calculated both for Open Interest purposes and for the purposes
+        of the CFTC-format Commitments of Traders reports that the Exchange
+        currently publishes. The MiFID report is derived from data supplied by
+        reporting members and is dependent on the submission of accurate and
+        complete data. Where the Exchange identifies invalid or inaccurate data
+        it is excluded from the report. For more details, please view the
+        following
+        <a href="/publicdocs/circulars/17197.pdf" class="standalone-link"
+          >circular</a
+        >.</em
+      >
+    </div>
+  </div>
+  <div class="true-grid-half">
+    <h5>ICE Futures Abu Dhabi</h5>
+    <ul class="list-unstyled">
+      <li>
+        <a href="/report/287" class="standalone-link"
+          >Exchange Commitments of Traders</a
+        >
+      </li>
+    </ul>
+  </div>
+</div></div></div></div></div>
